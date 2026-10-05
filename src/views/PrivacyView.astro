@@ -1,0 +1,37 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import { ROUTES, type Lang } from '@/i18n';
+import { getPage } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'privacy');
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  path={ROUTES.privacy[lang]}
+  alternates={ROUTES.privacy}
+>
+  <PageIntro eyebrow={page.data.eyebrow} heading={page.data.heading} lead={page.data.lead} />
+  <section class="section section--top-tight">
+    <div class="wrap">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section--top-tight {
+    padding-top: 1rem;
+  }
+</style>

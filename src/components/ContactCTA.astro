@@ -1,0 +1,98 @@
+---
+/** CTA de cierre: aparece al final de Inicio y de cada subpágina. */
+import CallButton from './CallButton.astro';
+import CopyButton from './CopyButton.astro';
+import PhoneNumber from './PhoneNumber.astro';
+import { block, getPage } from '@/lib/content';
+import { t, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'contact');
+---
+
+<section class="cta on-primary" aria-labelledby="cta-title">
+  <div class="wrap cta-grid">
+    <div data-reveal>
+      <p class="eyebrow">{block(page, 'ctaEyebrow')}</p>
+      <h2 id="cta-title" class="h2 cta-title">
+        {block(page, 'ctaTitle')}
+      </h2>
+    </div>
+    <div class="cta-side" data-reveal>
+      <p class="lead">{block(page, 'ctaText')}</p>
+      <p class="cta-phone">
+        <span class="cta-phone-label">{t(lang, 'cta.phoneLabel')}</span>
+        <PhoneNumber />
+      </p>
+      <div class="cta-actions">
+        <CallButton lang={lang} size="lg" primary />
+        <CopyButton lang={lang} id="cta-copy" />
+      </div>
+      <p class="cta-note">{block(page, 'reassure')}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-note {
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    color: var(--on-primary-soft);
+  }
+  .cta {
+    padding-block: var(--section);
+    position: relative;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: var(--gutter);
+    width: min(12rem, 30%);
+    height: 3px;
+    background: var(--cta-on-primary);
+  }
+  .cta-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .cta-title {
+    margin-top: 1.25rem;
+    max-width: 16ch;
+  }
+  .cta-side {
+    display: grid;
+    gap: 1.75rem;
+    align-content: end;
+  }
+  .cta-phone {
+    display: grid;
+    gap: 0.25rem;
+    font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.1rem);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--on-primary) 25%, transparent);
+  }
+  .cta-phone-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--on-primary-soft);
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  @media (min-width: 60rem) {
+    .cta-grid {
+      grid-template-columns: 7fr 5fr;
+      column-gap: clamp(3rem, 6vw, 7rem);
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { ROUTES, type Lang } from '@/i18n';
+import { block, getPage, getProjects } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'projects');
+const projects = await getProjects(lang);
+const infrastructure = projects.filter((p) => p.data.category === 'infrastructure');
+const support = projects.filter((p) => p.data.category === 'support');
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  path={ROUTES.projects[lang]}
+  alternates={ROUTES.projects}
+  current="projects"
+>
+  <PageIntro eyebrow={page.data.eyebrow} heading={page.data.heading} lead={page.data.lead} />
+
+  <section class="section section--top-tight">
+    <div class="wrap featured">
+      {infrastructure.map((p, i) => (
+        <ProjectCard project={p} lang={lang} index={i} reverse={i % 2 === 1} headingLevel="h2" />
+      ))}
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="support-title">
+    <div class="wrap support-grid">
+      <h2 id="support-title" class="eyebrow">
+        {block(page, 'moreTitle')}
+      </h2>
+      <div>
+        {support.map((p, i) => (
+          <ProjectCard
+            project={p}
+            lang={lang}
+            variant="row"
+            index={infrastructure.length + i}
+            headingLevel="h3"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section--top-tight {
+    padding-top: 1rem;
+  }
+  .featured {
+    display: grid;
+    gap: clamp(4rem, 8vw, 7rem);
+  }
+  .support-grid {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 64rem) {
+    .support-grid {
+      grid-template-columns: 3fr 9fr;
+      align-items: start;
+    }
+  }
+</style>

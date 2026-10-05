@@ -1,0 +1,98 @@
+---
+import type { ImageMetadata } from 'astro';
+import '@/styles/global.css';
+import font300 from '@/assets/fonts/montserrat-latin-300-normal.woff2?url';
+import font400 from '@/assets/fonts/montserrat-latin-400-normal.woff2?url';
+import ContactCTA from '@/components/ContactCTA.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import SEO from '@/components/SEO.astro';
+import StickyCTA from '@/components/StickyCTA.astro';
+import { DEFAULT_THEME } from '@/config/site';
+import { CSP_META } from '@/config/security.mjs';
+import { HREFLANG, t, type Lang, type RouteKey } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Ruta actual sin `base`, p. ej. "/proyectos/". */
+  path: string;
+  /** Ruta equivalente en cada idioma (sin `base`). */
+  alternates: Record<Lang, string>;
+  current?: RouteKey;
+  image?: ImageMetadata | undefined;
+  imageAlt?: string | undefined;
+  noindex?: boolean;
+  /** Muestra el CTA de cierre (todas las páginas salvo Contacto). */
+  closingCta?: boolean;
+  /** Header transparente sobre un hero oscuro (Inicio). */
+  overlayHeader?: boolean;
+}
+const {
+  lang,
+  title,
+  description,
+  path,
+  alternates,
+  current,
+  image,
+  imageAlt,
+  noindex = false,
+  closingCta = true,
+  overlayHeader = false,
+} = Astro.props;
+
+// El selector de tema solo existe en desarrollo: Vite elimina este import en producción.
+const ThemeSwitcher = import.meta.env.DEV
+  ? (await import('@/components/ThemeSwitcher.astro')).default
+  : null;
+---
+
+<!doctype html>
+<html lang={HREFLANG[lang]} data-theme={DEFAULT_THEME}>
+  <head>
+    <meta charset="utf-8" />
+    {
+      /* CSP solo en producción: el servidor de desarrollo de Vite usa scripts en línea. */
+      import.meta.env.PROD && <meta http-equiv="content-security-policy" content={CSP_META} />
+    }
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font300} as="font" type="font/woff2" crossorigin />
+    <SEO
+      lang={lang}
+      title={title}
+      description={description}
+      path={path}
+      alternates={alternates}
+      image={image}
+      imageAlt={imageAlt}
+      noindex={noindex}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {t(lang, 'a11y.skip')}
+    </a>
+    <Header lang={lang} alternates={alternates} current={current} overlay={overlayHeader} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    {closingCta && <ContactCTA lang={lang} />}
+    <Footer lang={lang} />
+    <StickyCTA lang={lang} />
+    {ThemeSwitcher && <ThemeSwitcher />}
+    <script>
+      import '../scripts/main.ts';
+    </script>
+  </body>
+</html>
+
+<style>
+  main:focus {
+    outline: none;
+  }
+</style>

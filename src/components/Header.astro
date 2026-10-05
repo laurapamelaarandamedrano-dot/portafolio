@@ -1,0 +1,279 @@
+---
+import CallButton from './CallButton.astro';
+import Icon from './Icon.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { PERSON_NAME } from '@/config/site';
+import { NAV, href, t, type Lang, type RouteKey } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  alternates: Record<Lang, string>;
+  current?: RouteKey | undefined;
+  /** Transparente sobre el hero; se vuelve sólido al hacer scroll (solo con JS). */
+  overlay?: boolean;
+}
+const { lang, alternates, current, overlay = false } = Astro.props;
+const [first, ...rest] = PERSON_NAME.split(' ');
+---
+
+<header class:list={['site-header', { 'is-overlay': overlay }]} data-header>
+  <div class="wrap bar">
+    <a class="brand" href={href(lang, 'home')}>
+      <span class="brand-first">{first}</span>
+      <span class="brand-rest">{rest.join(' ')}</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      data-menu-toggle
+      data-label-open={t(lang, 'a11y.menuOpen')}
+      data-label-close={t(lang, 'a11y.menuClose')}
+    >
+      <span class="menu-word">{t(lang, 'nav.menu')}</span>
+      <Icon name="menu" class="i-menu" />
+      <Icon name="close" class="i-close" />
+    </button>
+
+    <div class="nav-panel" id="site-nav">
+      <nav aria-label={t(lang, 'a11y.mainNav')}>
+        <ul role="list" class="nav-list">
+          {NAV.map((key) => (
+            <li>
+              <a href={href(lang, key)} aria-current={key === current ? 'page' : undefined}>
+                {t(lang, `nav.${key}`)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <LanguageSwitcher lang={lang} alternates={alternates} />
+      <CallButton lang={lang} class="header-call" />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    color: var(--ink);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    view-transition-name: site-header;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 4.75rem;
+  }
+  .brand {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.1;
+    text-decoration: none;
+    padding-block: 0.5rem;
+  }
+  .brand-first {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  .brand-rest {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 0.1rem;
+    margin: 0;
+  }
+  .nav-list a {
+    position: relative;
+    display: inline-block;
+    padding: 0.75rem 0.75rem;
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.45rem;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+  .nav-list a:hover::after,
+  .nav-list a[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+  .nav-list a[aria-current='page'] {
+    font-weight: 600;
+  }
+  .nav-panel :global(.header-call) {
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.25rem 0.5rem 0.75rem;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .menu-toggle :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .menu-toggle :global(.i-close),
+  .menu-toggle[aria-expanded='true'] :global(.i-menu) {
+    display: none;
+  }
+  .menu-toggle[aria-expanded='true'] :global(.i-close) {
+    display: block;
+  }
+
+  .nav-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* ----- Modo transparente sobre el hero (solo con JS, para garantizar legibilidad) ----- */
+  @media (scripting: enabled) {
+    .site-header.is-overlay {
+      position: fixed;
+      inset: 0 0 auto 0;
+      color: var(--on-primary);
+      background: transparent;
+      border-bottom-color: color-mix(in srgb, var(--on-primary) 18%, transparent);
+      --focus: var(--accent-on-primary);
+    }
+    .site-header.is-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transition: opacity 0.35s var(--ease);
+    }
+    .site-header.is-overlay .brand-first {
+      color: var(--accent-on-primary);
+    }
+    .site-header.is-overlay :global(.lang a) {
+      color: var(--on-primary-soft);
+    }
+    .site-header.is-overlay :global(.lang a[aria-current='true']) {
+      color: var(--on-primary);
+    }
+    .site-header.is-overlay .nav-panel :global(.header-call) {
+      background: var(--cta-on-primary);
+      color: var(--on-cta-on-primary);
+    }
+    /* Sólido al hacer scroll o con el menú abierto */
+    .site-header.is-overlay:global(.is-solid),
+    :global(.menu-open) .site-header.is-overlay {
+      color: var(--ink);
+      border-bottom-color: transparent;
+      --focus: var(--primary);
+    }
+    .site-header.is-overlay:global(.is-solid)::before,
+    :global(.menu-open) .site-header.is-overlay::before {
+      opacity: 1;
+    }
+    .site-header.is-overlay:global(.is-solid) .brand-first,
+    :global(.menu-open) .site-header.is-overlay .brand-first {
+      color: var(--accent-strong);
+    }
+    .site-header.is-overlay:global(.is-solid) :global(.lang a),
+    :global(.menu-open) .site-header.is-overlay :global(.lang a) {
+      color: var(--ink-soft);
+    }
+    .site-header.is-overlay:global(.is-solid) :global(.lang a[aria-current='true']),
+    :global(.menu-open) .site-header.is-overlay :global(.lang a[aria-current='true']) {
+      color: var(--ink);
+    }
+    .site-header.is-overlay:global(.is-solid) .nav-panel :global(.header-call),
+    :global(.menu-open) .site-header.is-overlay .nav-panel :global(.header-call) {
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+  }
+
+  /* ----- Móvil: con JS, panel desplegable; sin JS, navegación visible ----- */
+  @media (max-width: 63.99rem) {
+    .bar {
+      flex-wrap: wrap;
+    }
+    .nav-panel {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding-bottom: 1.25rem;
+    }
+    .nav-list {
+      flex-direction: column;
+    }
+    .nav-list a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 1.35rem;
+      font-weight: 300;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-list a::after {
+      display: none;
+    }
+    .nav-panel :global(.lang) {
+      margin-top: 0.75rem;
+    }
+    /* En móvil la llamada vive en el CTA fijo inferior. */
+    .nav-panel :global(.header-call) {
+      display: none;
+    }
+  }
+  @media (max-width: 63.99rem) and (scripting: enabled) {
+    .menu-toggle {
+      display: inline-flex;
+    }
+    .nav-panel {
+      display: none;
+    }
+    .nav-panel:global(.is-open) {
+      display: flex;
+      animation: rise 0.4s var(--ease) both;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-panel:global(.is-open) {
+      animation: none;
+    }
+  }
+</style>

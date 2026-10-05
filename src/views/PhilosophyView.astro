@@ -1,0 +1,124 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import { ROUTES, type Lang } from '@/i18n';
+import { block, getPage } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'philosophy');
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  path={ROUTES.philosophy[lang]}
+  alternates={ROUTES.philosophy}
+  current="philosophy"
+  image={page.data.image}
+  imageAlt={page.data.imageAlt}
+>
+  <PageIntro eyebrow={page.data.eyebrow} heading={page.data.heading} lead={page.data.lead} />
+
+  {page.data.image && (
+    <figure class="wrap wide-photo anim-fade">
+      <Picture
+        src={page.data.image}
+        alt={page.data.imageAlt ?? ''}
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1280, 1800]}
+        sizes="(min-width: 82rem) 82rem, 100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+  )}
+
+  <section class="section" aria-labelledby="values-title">
+    <div class="wrap values-grid">
+      <h2 id="values-title" class="h2 values-title">
+        {block(page, 'valuesTitle')}
+      </h2>
+      <ol role="list" class="values">
+        {page.data.items.map((item, i) => (
+          <li class="value" data-reveal>
+            <span class="value-num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="h3">{item.title}</h3>
+            <p class="muted">{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="wrap">
+      <p class="closing" data-reveal>
+        {block(page, 'closing')}
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wide-photo :global(img) {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+  .values-grid {
+    display: grid;
+    gap: 3rem;
+  }
+  .values {
+    margin: 0;
+  }
+  .value {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.4rem 1rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .value:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .value-num {
+    grid-row: span 2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent-strong);
+    padding-top: 0.2rem;
+  }
+  .value p {
+    max-width: 58ch;
+  }
+  .closing {
+    font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    max-width: 32ch;
+    padding-left: clamp(1.25rem, 4vw, 3rem);
+    border-left: 2px solid var(--accent);
+  }
+  @media (min-width: 64rem) {
+    .values-grid {
+      grid-template-columns: 4fr 8fr;
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+    .values-title {
+      position: sticky;
+      top: 7rem;
+      align-self: start;
+    }
+  }
+</style>

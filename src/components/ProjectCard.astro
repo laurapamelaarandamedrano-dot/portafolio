@@ -1,0 +1,255 @@
+---
+/**
+ * Proyecto en dos variantes deliberadamente distintas (no tarjetas idénticas):
+ * - feature: imagen grande + texto en retícula asimétrica (alternable).
+ * - row: fila editorial numerada, sin imagen o con miniatura.
+ * Si no hay foto, usa una composición tipográfica de la paleta.
+ */
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { projectPath, t, withBase, type Lang } from '@/i18n';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang: Lang;
+  variant?: 'feature' | 'row';
+  index?: number;
+  reverse?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const {
+  project,
+  lang,
+  variant = 'feature',
+  index = 0,
+  reverse = false,
+  headingLevel = 'h3',
+} = Astro.props;
+const { title, kicker, summary, cover, operator } = project.data;
+const url = withBase(projectPath(lang, project.data.route));
+const Heading = headingLevel;
+const num = String(index + 1).padStart(2, '0');
+---
+
+{variant === 'feature' ? (
+  <article class:list={['feature', { reverse }]} data-reveal>
+    <div class="media">
+      {cover ? (
+        <Picture
+          src={cover}
+          alt=""
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200, 1600]}
+          sizes="(min-width: 64rem) 58vw, 100vw"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <span class="typo" aria-hidden="true">
+          <span>{kicker}</span>
+        </span>
+      )}
+    </div>
+    <div class="text">
+      <p class="meta">
+        <span class="num">{num}</span>
+        {operator ? `${kicker} · ${operator}` : kicker}
+      </p>
+      <Heading class="title">
+        <a href={url}>{title}</a>
+      </Heading>
+      <p class="summary">{summary}</p>
+      <span class="link more" aria-hidden="true">
+        {t(lang, 'projects.view')}
+        <Icon name="arrow" class="arrow" />
+      </span>
+    </div>
+  </article>
+) : (
+  <article class="row" data-reveal>
+    <span class="num">{num}</span>
+    <div>
+      <p class="meta">{operator ? `${kicker} · ${operator}` : kicker}</p>
+      <Heading class="row-title">
+        <a href={url}>{title}</a>
+      </Heading>
+    </div>
+    <p class="row-summary">{summary}</p>
+    <Icon name="arrow" class="arrow row-arrow" />
+  </article>
+)}
+
+<style>
+  /* ---------- Feature ---------- */
+  .feature {
+    position: relative;
+    display: grid;
+    gap: 1.75rem;
+  }
+  .media {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--primary);
+  }
+  .media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease);
+  }
+  .feature:hover .media :global(img) {
+    transform: scale(1.035);
+  }
+  .typo {
+    display: grid;
+    place-items: end start;
+    height: 100%;
+    padding: 2rem;
+    color: var(--on-primary);
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    background:
+      linear-gradient(var(--accent-on-primary), var(--accent-on-primary)) 2rem 2rem / 3rem 1px
+        no-repeat,
+      var(--primary);
+  }
+  .text {
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+  }
+  .meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .num {
+    color: var(--accent-strong);
+    letter-spacing: 0.08em;
+  }
+  .title {
+    font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+  .title a,
+  .row-title a {
+    text-decoration: none;
+  }
+  /* Toda la tarjeta es clicable, con un solo enlace accesible. */
+  .title a::after,
+  .row-title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .summary {
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .more {
+    justify-self: start;
+  }
+  .feature:hover .more::after {
+    transform: scaleX(1);
+  }
+  .feature:hover .more :global(.arrow) {
+    transform: translateX(4px);
+  }
+  .feature:focus-within {
+    outline: none;
+  }
+  .title a:focus-visible {
+    outline: none;
+  }
+  .title a:focus-visible::after,
+  .row-title a:focus-visible::after {
+    outline: 3px solid var(--focus);
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 64rem) {
+    .feature {
+      grid-template-columns: 7fr 5fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+    }
+    .feature.reverse .media {
+      order: 2;
+    }
+    .feature.reverse {
+      grid-template-columns: 5fr 7fr;
+    }
+    .media {
+      aspect-ratio: 16 / 11;
+    }
+  }
+
+  /* ---------- Row ---------- */
+  .row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0.5rem 1rem;
+    align-items: start;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .row .num {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding-top: 0.2rem;
+  }
+  .row-title {
+    margin-top: 0.35rem;
+    font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .row-summary {
+    grid-column: 2 / -1;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .row :global(.row-arrow) {
+    grid-row: 1;
+    grid-column: 3;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--accent-strong);
+    transition: transform 0.35s var(--ease);
+  }
+  .row:hover :global(.row-arrow) {
+    transform: translateX(6px);
+  }
+  @media (min-width: 64rem) {
+    .row {
+      grid-template-columns: 3rem 5fr 6fr auto;
+      align-items: center;
+    }
+    .row-summary {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .row :global(.row-arrow) {
+      grid-column: 4;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .media :global(img) {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Bloquea commits con secretos y fotos con metadatos.
+node scripts/check-secrets.mjs --staged || exit 1
+node scripts/strip-exif.mjs --check || exit 1

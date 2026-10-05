@@ -1,0 +1,50 @@
+# Dependencias y build
+node_modules/
+dist/
+.astro/
+.cache/
+.lighthouseci/
+lighthouse-report*.html
+lighthouse-report*.json
+
+# Variables de entorno y secretos (nunca al repositorio)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+id_rsa*
+id_ed25519*
+.npmrc.local
+secrets/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# Documentos internos y privados (nunca al repositorio público)
+REVISION*.md
+docs/REVISION*.md
+*PRIVADO*
+*.privado.*
+private/
+
+# Respaldos locales de fotos con metadatos
+*.original.jpg
+*.original.jpeg

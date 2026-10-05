@@ -1,0 +1,11 @@
+# Saltos de línea LF en todo el repositorio (scripts, hooks y CI corren en Linux).
+* text=auto eol=lf
+
+# Binarios
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.avif binary
+*.woff2 binary
+*.mp4 binary

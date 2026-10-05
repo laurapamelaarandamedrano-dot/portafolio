@@ -1,0 +1,48 @@
+---
+/** Encabezado de subpágina: tipografía grande, retícula asimétrica, línea dorada fina. */
+interface Props {
+  eyebrow?: string | undefined;
+  heading: string;
+  lead?: string | undefined;
+}
+const { eyebrow, heading, lead } = Astro.props;
+---
+
+<header class="intro">
+  <div class="wrap intro-grid">
+    {eyebrow && <p class="eyebrow anim-rise delay-1">{eyebrow}</p>}
+    <h1 class="display intro-title anim-rise delay-2">{heading}</h1>
+    {lead && <p class="lead intro-lead anim-rise delay-3">{lead}</p>}
+    <slot />
+  </div>
+</header>
+
+<style>
+  .intro {
+    padding-block: clamp(3.5rem, 2rem + 6vw, 7.5rem) clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .intro-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .intro-title {
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+  }
+  .intro-lead {
+    max-width: 46ch;
+  }
+  @media (min-width: 64rem) {
+    .intro-grid {
+      grid-template-columns: 8fr 4fr;
+      column-gap: 4rem;
+    }
+    .intro-grid > :global(*) {
+      grid-column: 1;
+    }
+    .intro-lead {
+      grid-column: 1;
+    }
+  }
+</style>

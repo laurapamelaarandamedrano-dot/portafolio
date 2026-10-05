@@ -1,0 +1,63 @@
+---
+/** Selector ES | EN: lleva a la página equivalente. El idioma lo define la URL (sin cookies). */
+import { HREFLANG, LANGS, t, withBase, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  alternates: Record<Lang, string>;
+}
+const { lang, alternates } = Astro.props;
+---
+
+<nav class="lang" aria-label={t(lang, 'a11y.langSwitcher')}>
+  <ul role="list">
+    {LANGS.map((code) => (
+      <li>
+        <a
+          href={withBase(alternates[code])}
+          lang={code}
+          hreflang={HREFLANG[code]}
+          aria-current={code === lang ? 'true' : undefined}
+        >
+          {code.toUpperCase()}
+          <span class="visually-hidden"> · {t(code, `lang.${code}`)}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .lang ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  .lang li + li::before {
+    content: '|';
+    color: var(--line);
+    padding-inline: 0.15rem;
+  }
+  .lang a {
+    display: inline-block;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .lang a:hover {
+    color: var(--ink);
+  }
+  .lang a[aria-current='true'] {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.45em;
+  }
+</style>

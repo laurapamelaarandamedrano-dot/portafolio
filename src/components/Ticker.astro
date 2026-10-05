@@ -1,0 +1,98 @@
+---
+/**
+ * Franja de capacidades en movimiento continuo (solo transform).
+ * La primera lista es la accesible; la copia que permite el bucle está oculta a lectores.
+ * Se detiene al pasar el cursor y queda estática con prefers-reduced-motion.
+ */
+interface Props {
+  label: string;
+  items: string[];
+}
+const { label, items } = Astro.props;
+---
+
+<section class="ticker" aria-label={label}>
+  <div class="track">
+    <ul role="list" class="row">
+      {items.map((item) => (
+        <li>
+          <span class="mark" aria-hidden="true" />
+          {item}
+        </li>
+      ))}
+    </ul>
+    <ul role="list" class="row" aria-hidden="true">
+      {items.map((item) => (
+        <li>
+          <span class="mark" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .ticker {
+    overflow: hidden;
+    background: var(--primary);
+    color: var(--on-primary);
+    border-top: 1px solid color-mix(in srgb, var(--on-primary) 14%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--on-primary) 14%, transparent);
+  }
+  .track {
+    display: flex;
+    width: max-content;
+  }
+  .row {
+    display: flex;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .row li {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.15rem 2rem 1.15rem 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .mark {
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--accent-on-primary);
+    transform: rotate(45deg);
+    flex: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .track {
+      animation: ticker 48s linear infinite;
+    }
+    .ticker:hover .track {
+      animation-play-state: paused;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      width: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .row {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .row[aria-hidden='true'] {
+      display: none;
+    }
+  }
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

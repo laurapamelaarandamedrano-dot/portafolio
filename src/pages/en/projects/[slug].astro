@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ProjectView from '@/views/ProjectView.astro';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects', (p) => p.data.lang === 'en');
+  return projects.map((project) => ({ params: { slug: project.data.route }, props: { project } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+---
+
+<ProjectView project={project} />

@@ -1,0 +1,46 @@
+---
+/** CTA fijo y discreto en móvil. Se oculta si ya hay un CTA principal en pantalla. */
+import CallButton from './CallButton.astro';
+import type { Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<div class="sticky-cta" data-sticky-cta>
+  <CallButton lang={lang} class="sticky-btn" />
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    padding: 0.6rem var(--gutter) calc(0.6rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    border-top: 1px solid var(--line);
+    transition:
+      transform 0.35s var(--ease),
+      opacity 0.35s var(--ease);
+  }
+  .sticky-cta :global(.sticky-btn) {
+    width: 100%;
+    min-height: 3rem;
+  }
+  .sticky-cta:global(.is-hidden) {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  @media (min-width: 64rem) {
+    .sticky-cta {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta {
+      transition: none;
+    }
+  }
+</style>

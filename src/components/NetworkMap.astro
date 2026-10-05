@@ -1,0 +1,527 @@
+---
+/**
+ * Mapa-red de México: puntos conectados que dibujan el territorio y resaltan los
+ * corredores carreteros del sitio. Se calcula en el build (SVG estático, sin librerías).
+ *
+ * - variant="full": estilo observatorio (retícula de coordenadas, radar, etiquetas).
+ * - variant="ambient": capa decorativa y tenue (hero).
+ *
+ * Movimiento solo con transform/opacity (CSS) y <animateMotion> (SVG), pausado fuera de
+ * pantalla y desactivado con prefers-reduced-motion (ver src/scripts/main.ts).
+ */
+import type { Lang } from '@/i18n';
+
+interface Props {
+  variant?: 'full' | 'ambient';
+  lang: Lang;
+  idPrefix: string;
+  title?: string;
+  desc?: string;
+  class?: string;
+}
+const { variant = 'full', lang, idPrefix, title, desc, class: className = '' } = Astro.props;
+const full = variant === 'full';
+
+// ---------- Proyección equirectangular simple ----------
+const LON_MIN = -118;
+const LON_MAX = -86;
+const LAT_MIN = 14;
+const LAT_MAX = 33;
+const K = Math.cos((23.5 * Math.PI) / 180);
+const S = 28;
+const W = Math.round((LON_MAX - LON_MIN) * K * S);
+const H = Math.round((LAT_MAX - LAT_MIN) * S);
+const proj = (lon: number, lat: number): [number, number] => [
+  (lon - LON_MIN) * K * S,
+  (LAT_MAX - lat) * S,
+];
+const r1 = (n: number) => Math.round(n * 10) / 10;
+
+// Contorno simplificado de México (lon, lat).
+const OUTLINE: [number, number][] = [
+  [-117.1, 32.5],
+  [-114.7, 32.7],
+  [-111.0, 31.3],
+  [-108.2, 31.3],
+  [-108.2, 31.8],
+  [-106.5, 31.8],
+  [-104.9, 30.6],
+  [-104.4, 29.6],
+  [-103.1, 29.0],
+  [-102.4, 29.8],
+  [-101.0, 29.4],
+  [-100.5, 28.7],
+  [-99.5, 27.5],
+  [-99.1, 26.4],
+  [-97.5, 25.9],
+  [-97.2, 25.0],
+  [-97.8, 22.3],
+  [-97.2, 20.6],
+  [-96.1, 19.2],
+  [-95.0, 18.6],
+  [-94.4, 18.15],
+  [-92.7, 18.6],
+  [-91.8, 18.65],
+  [-90.6, 19.7],
+  [-90.4, 20.9],
+  [-89.6, 21.3],
+  [-87.1, 21.6],
+  [-86.8, 21.1],
+  [-87.4, 19.6],
+  [-88.3, 18.5],
+  [-88.9, 17.9],
+  [-90.98, 17.82],
+  [-90.98, 17.25],
+  [-91.4, 17.25],
+  [-90.45, 16.07],
+  [-91.73, 16.07],
+  [-92.2, 14.55],
+  [-93.75, 16.1],
+  [-95.2, 16.17],
+  [-96.5, 15.65],
+  [-98.0, 16.2],
+  [-99.9, 16.85],
+  [-101.5, 17.6],
+  [-102.2, 17.95],
+  [-103.6, 18.6],
+  [-104.3, 19.1],
+  [-105.6, 20.4],
+  [-105.3, 21.5],
+  [-106.4, 23.2],
+  [-107.6, 24.6],
+  [-109.0, 25.6],
+  [-110.0, 27.0],
+  [-110.9, 27.9],
+  [-111.95, 28.8],
+  [-112.8, 30.5],
+  [-113.5, 31.3],
+  [-114.8, 31.8],
+  [-114.6, 30.2],
+  [-113.55, 28.95],
+  [-112.27, 27.34],
+  [-111.35, 26.0],
+  [-110.3, 24.2],
+  [-109.9, 22.88],
+  [-110.2, 23.45],
+  [-112.1, 24.6],
+  [-113.6, 26.7],
+  [-114.9, 27.8],
+  [-116.0, 30.4],
+  [-116.6, 31.8],
+];
+const poly = OUTLINE.map(([lon, lat]) => proj(lon, lat));
+const inside = (x: number, y: number) => {
+  let hit = false;
+  poly.forEach(([xi, yi], i) => {
+    const [xj, yj] = poly.at(i - 1) ?? [xi, yi];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) hit = !hit;
+  });
+  return hit;
+};
+const outlinePath = `M${poly.map(([x, y]) => `${r1(x)} ${r1(y)}`).join('L')}Z`;
+
+// Pseudoaleatorio determinista (builds reproducibles).
+const rnd = (n: number) => {
+  const v = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+  return v - Math.floor(v);
+};
+
+// ---------- Red de puntos ----------
+const step = (full ? 0.82 : 1.15) * S;
+const points: { x: number; y: number; g: number }[] = [];
+let n = 0;
+for (let row = 0, y = step / 2; y < H; row++, y += step * 0.866) {
+  for (let x = (row % 2) * (step / 2); x < W; x += step) {
+    n++;
+    const jx = x + (rnd(n) - 0.5) * step * 0.4;
+    const jy = y + (rnd(n + 999) - 0.5) * step * 0.4;
+    if (inside(jx, jy)) points.push({ x: jx, y: jy, g: Math.floor(rnd(n * 7) * 5) });
+  }
+}
+const edges: string[] = [];
+const maxD = step * 1.3;
+points.forEach((a, i) => {
+  points.slice(i + 1).forEach((b, k) => {
+    const j = i + 1 + k;
+    if (Math.hypot(a.x - b.x, a.y - b.y) < maxD && rnd(i * 31 + j) > 0.38) {
+      edges.push(`M${r1(a.x)} ${r1(a.y)}L${r1(b.x)} ${r1(b.y)}`);
+    }
+  });
+});
+const edgePath = edges.join('');
+const dotGroups = [0, 1, 2, 3, 4].map((g) => points.filter((p) => p.g === g));
+
+// ---------- Nodos y corredores (proyectos del sitio) ----------
+const NODES = {
+  gdl: { lon: -103.35, lat: 20.67 },
+  zap: { lon: -103.07, lat: 20.62 },
+  mar: { lon: -100.44, lat: 19.89 },
+  zit: { lon: -100.36, lat: 19.43 },
+  pat: { lon: -101.61, lat: 19.51 },
+  uru: { lon: -102.06, lat: 19.42 },
+  lzc: { lon: -102.2, lat: 17.96 },
+} as const;
+type NodeKey = keyof typeof NODES;
+const P = (k: NodeKey) => proj(NODES[k].lon, NODES[k].lat);
+
+const curve = (keys: NodeKey[]) => {
+  const pts = keys.map(P);
+  const [first, ...rest] = pts;
+  if (!first) return '';
+  let d = `M${r1(first[0])} ${r1(first[1])}`;
+  let prev = first;
+  for (const point of rest) {
+    const [x0, y0] = prev;
+    const [x1, y1] = point;
+    prev = point;
+    const mx = (x0 + x1) / 2;
+    const my = (y0 + y1) / 2;
+    const cx = mx - (y1 - y0) * 0.22;
+    const cy = my + (x1 - x0) * 0.22;
+    d += `Q${r1(cx)} ${r1(cy)} ${r1(x1)} ${r1(y1)}`;
+  }
+  return d;
+};
+const ROUTES = [
+  { id: `${idPrefix}-r1`, d: curve(['gdl', 'zap', 'mar']), dur: 5.5 },
+  { id: `${idPrefix}-r2`, d: curve(['mar', 'zit']), dur: 3 },
+  { id: `${idPrefix}-r3`, d: curve(['pat', 'uru', 'lzc']), dur: 4.5 },
+];
+
+const LABELS =
+  lang === 'es'
+    ? [
+        { k: 'gdl' as NodeKey, text: 'Guadalajara–Zapotlanejo', dx: -12, dy: -14, anchor: 'end' },
+        { k: 'mar' as NodeKey, text: 'Maravatío–Zitácuaro', dx: 14, dy: -10, anchor: 'start' },
+        { k: 'lzc' as NodeKey, text: 'Autopista Siglo XXI', dx: -12, dy: 22, anchor: 'end' },
+      ]
+    : [
+        { k: 'gdl' as NodeKey, text: 'Guadalajara–Zapotlanejo', dx: -12, dy: -14, anchor: 'end' },
+        { k: 'mar' as NodeKey, text: 'Maravatío–Zitácuaro', dx: 14, dy: -10, anchor: 'start' },
+        { k: 'lzc' as NodeKey, text: 'Siglo XXI Highway', dx: -12, dy: 22, anchor: 'end' },
+      ];
+
+// Centro del radar: el occidente del país, donde están los corredores.
+const [RX, RY] = proj(-101.6, 19.4);
+const W_LETTER = lang === 'es' ? 'O' : 'W';
+const gratLon = [-115, -110, -105, -100, -95, -90];
+const gratLat = [15, 20, 25, 30];
+---
+
+<svg
+  class:list={['netmap', `netmap--${variant}`, className]}
+  viewBox={`0 0 ${W} ${H}`}
+  preserveAspectRatio="xMidYMid meet"
+  data-network
+  role={full ? 'img' : undefined}
+  aria-labelledby={full ? `${idPrefix}-title ${idPrefix}-desc` : undefined}
+  aria-hidden={full ? undefined : 'true'}
+  focusable="false"
+>
+  {full && title && <title id={`${idPrefix}-title`}>{title}</title>}
+  {full && desc && <desc id={`${idPrefix}-desc`}>{desc}</desc>}
+  <defs>
+    <linearGradient id={`${idPrefix}-sweep`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" class="sweep-stop-a"></stop>
+      <stop offset="1" class="sweep-stop-b"></stop>
+    </linearGradient>
+  </defs>
+
+  {full && (
+    <g class="graticule">
+      {gratLon.map((lon) => {
+        const [x] = proj(lon, LAT_MAX);
+        return (
+          <>
+            <line x1={r1(x)} y1="0" x2={r1(x)} y2={H} />
+            <text x={r1(x) + 4} y={H - 8} class="grat-label">
+              {Math.abs(lon)}°{W_LETTER}
+            </text>
+          </>
+        );
+      })}
+      {gratLat.map((lat) => {
+        const [, y] = proj(LON_MIN, lat);
+        return (
+          <>
+            <line x1="0" y1={r1(y)} x2={W} y2={r1(y)} />
+            <text x="6" y={r1(y) - 5} class="grat-label">
+              {lat}°N
+            </text>
+          </>
+        );
+      })}
+    </g>
+  )}
+
+  <path class="outline" d={outlinePath}></path>
+
+  <g class="edges">
+    <path d={edgePath}></path>
+  </g>
+  <g class="dots">
+    {dotGroups.map((group, gi) => (
+      <g class={`dot-group g${gi}`}>
+        {group.map((p) => (
+          <circle cx={r1(p.x)} cy={r1(p.y)} r={full ? 1.6 : 1.4} />
+        ))}
+      </g>
+    ))}
+  </g>
+
+  {full && (
+    <g transform={`translate(${r1(RX)} ${r1(RY)})`} class="radar">
+      <circle r="70" class="ring" />
+      <circle r="140" class="ring" />
+      <circle r="210" class="ring" />
+      <line x1="-230" y1="0" x2="230" y2="0" class="cross" />
+      <line x1="0" y1="-230" x2="0" y2="230" class="cross" />
+      <g class="sweep">
+        <path d="M0 0L210 0A210 210 0 0 0 181.9 -105Z" fill={`url(#${idPrefix}-sweep)`} />
+        <line x1="0" y1="0" x2="210" y2="0" class="sweep-edge" />
+      </g>
+    </g>
+  )}
+
+  <g class="routes">
+    {ROUTES.map((r) => (
+      <path id={r.id} d={r.d} class="route" />
+    ))}
+  </g>
+
+  <g class="nodes">
+    {(Object.keys(NODES) as NodeKey[]).map((k, i) => {
+      const [x, y] = P(k);
+      return (
+        <g transform={`translate(${r1(x)} ${r1(y)})`}>
+          <circle r="3.2" class={`pulse p${i % 3}`} />
+          <circle r="3.2" class="node" />
+        </g>
+      );
+    })}
+  </g>
+
+  <g class="signals">
+    {ROUTES.map((r, i) => (
+      <circle r="2.6" class="signal">
+        <animateMotion
+          dur={`${r.dur}s`}
+          begin={`-${(i + 1) * 0.8}s`}
+          repeatCount="indefinite"
+          rotate="auto"
+        >
+          <mpath href={`#${r.id}`} />
+        </animateMotion>
+      </circle>
+    ))}
+  </g>
+
+  {full && (
+    <g class="labels">
+      {LABELS.map((l) => {
+        const [x, y] = P(l.k);
+        return (
+          <text x={r1(x + l.dx)} y={r1(y + l.dy)} text-anchor={l.anchor} class="map-label">
+            {l.text}
+          </text>
+        );
+      })}
+    </g>
+  )}
+</svg>
+
+<style>
+  .netmap {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    color: var(--on-primary);
+  }
+  .graticule line {
+    stroke: currentColor;
+    stroke-opacity: 0.08;
+    stroke-width: 0.6;
+    stroke-dasharray: 2 4;
+  }
+  .grat-label {
+    fill: currentColor;
+    fill-opacity: 0.45;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
+  }
+  .outline {
+    fill: currentColor;
+    fill-opacity: 0.03;
+    stroke: currentColor;
+    stroke-opacity: 0.22;
+    stroke-width: 0.8;
+  }
+  .edges path {
+    fill: none;
+    stroke: currentColor;
+    stroke-opacity: 0.16;
+    stroke-width: 0.55;
+  }
+  .dot-group circle {
+    fill: currentColor;
+  }
+  .dot-group {
+    opacity: 0.55;
+  }
+  .ring {
+    fill: none;
+    stroke: var(--accent-on-primary);
+    stroke-opacity: 0.18;
+    stroke-width: 0.7;
+    stroke-dasharray: 3 5;
+  }
+  .cross {
+    stroke: var(--accent-on-primary);
+    stroke-opacity: 0.14;
+    stroke-width: 0.6;
+  }
+  .sweep-stop-a {
+    stop-color: var(--accent-on-primary);
+    stop-opacity: 0;
+  }
+  .sweep-stop-b {
+    stop-color: var(--accent-on-primary);
+    stop-opacity: 0.22;
+  }
+  .sweep-edge {
+    stroke: var(--accent-on-primary);
+    stroke-opacity: 0.55;
+    stroke-width: 0.8;
+  }
+  .route {
+    fill: none;
+    stroke: var(--accent-on-primary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-opacity: 0.85;
+  }
+  .node {
+    fill: var(--accent-on-primary);
+    stroke: var(--primary);
+    stroke-width: 1;
+  }
+  .pulse {
+    fill: none;
+    stroke: var(--accent-on-primary);
+    stroke-width: 1;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .signal {
+    fill: var(--on-primary);
+  }
+  .map-label {
+    fill: var(--on-primary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* Variante ambiental (hero): más tenue, sin etiquetas. */
+  .netmap--ambient .outline {
+    fill-opacity: 0;
+    stroke-opacity: 0.12;
+  }
+  .netmap--ambient .edges path {
+    stroke-opacity: 0.12;
+  }
+  .netmap--ambient .route {
+    stroke-width: 1.4;
+    stroke-opacity: 0.7;
+  }
+
+  @media (max-width: 40rem) {
+    .map-label,
+    .grat-label {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .dot-group {
+      animation: twinkle 6s ease-in-out infinite;
+    }
+    .g1 {
+      animation-duration: 7.5s;
+      animation-delay: -2s;
+    }
+    .g2 {
+      animation-duration: 5.2s;
+      animation-delay: -4s;
+    }
+    .g3 {
+      animation-duration: 8.4s;
+      animation-delay: -1s;
+    }
+    .g4 {
+      animation-duration: 6.6s;
+      animation-delay: -3s;
+    }
+    .edges {
+      animation: breathe 9s ease-in-out infinite;
+    }
+    .sweep {
+      animation: sweep 9s linear infinite;
+    }
+    .pulse {
+      animation: pulse 3.2s var(--ease) infinite;
+    }
+    .p1 {
+      animation-delay: 1.1s;
+    }
+    .p2 {
+      animation-delay: 2.2s;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .signal {
+      display: none;
+    }
+  }
+  /* Fuera de pantalla: pausa (lo controla main.ts). */
+  .netmap:global(.is-paused) * {
+    animation-play-state: paused !important;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes sweep {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(5);
+    }
+  }
+</style>

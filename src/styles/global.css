@@ -1,0 +1,453 @@
+@import './tokens.css';
+
+/* ---------- Tipografía autoalojada (Montserrat, OFL) ---------- */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../assets/fonts/montserrat-latin-300-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/montserrat-latin-600-normal.woff2') format('woff2');
+}
+
+/* ---------- Escala y ritmo ---------- */
+:root {
+  color-scheme: light;
+  --font:
+    'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max: 82rem;
+  --section: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --focus: var(--primary);
+  --sticky-h: 4.25rem;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 6rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+p {
+  text-wrap: pretty;
+}
+a {
+  color: inherit;
+}
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-160%);
+}
+.skip-link:focus-visible {
+  transform: none;
+  --focus: var(--accent);
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--max));
+  margin-inline: auto;
+}
+.section {
+  padding-block: var(--section);
+}
+.section--tight {
+  padding-block: calc(var(--section) * 0.6);
+}
+.surface {
+  background: var(--surface);
+}
+.on-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  --focus: var(--accent-on-primary);
+}
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* ---------- Tipografía ---------- */
+.display {
+  font-size: clamp(2.35rem, 1.5rem + 4.2vw, 5.25rem);
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+.h2 {
+  font-size: clamp(1.85rem, 1.35rem + 2.2vw, 3.15rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+.lead {
+  font-size: clamp(1.125rem, 1.02rem + 0.45vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+.on-primary .lead {
+  color: var(--on-primary-soft);
+}
+.muted {
+  color: var(--ink-soft);
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+.eyebrow::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+.on-primary .eyebrow {
+  color: var(--accent-on-primary);
+}
+.prose {
+  max-width: 64ch;
+}
+.prose > * + * {
+  margin-top: 1.1em;
+}
+.prose h2 {
+  font-size: clamp(1.4rem, 1.2rem + 0.9vw, 1.85rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: 2.2em;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+.prose ul {
+  padding-left: 1.1rem;
+}
+.prose li + li {
+  margin-top: 0.4em;
+}
+.prose li::marker {
+  color: var(--accent-strong);
+}
+.prose strong {
+  font-weight: 600;
+}
+
+/* ---------- Enlaces y botones ---------- */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding-block: 0.35rem;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0.35);
+  transition: transform 0.45s var(--ease);
+}
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+.arrow {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  transition: transform 0.35s var(--ease);
+}
+.link:hover .arrow,
+.btn:hover .arrow,
+a:hover > .arrow {
+  transform: translateX(4px);
+}
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+.btn:hover::before {
+  opacity: 0.08;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.on-primary .btn--primary {
+  background: var(--cta-on-primary);
+  color: var(--on-cta-on-primary);
+}
+.btn--ghost {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+.btn--lg {
+  min-height: 3.85rem;
+  padding-inline: 2rem;
+  font-size: 1.05rem;
+}
+.btn[hidden] {
+  display: none;
+}
+
+/* ---------- Fotografía ---------- */
+.photo {
+  position: relative;
+}
+.photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo--frame::after {
+  content: '';
+  position: absolute;
+  inset: 0.9rem -0.9rem -0.9rem 0.9rem;
+  border: 1px solid var(--accent);
+  z-index: -1;
+  pointer-events: none;
+}
+figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Movimiento ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anim-rise {
+    animation: rise 0.9s var(--ease) both;
+  }
+  .anim-fade {
+    animation: fade 1.2s var(--ease) both;
+  }
+  .delay-1 {
+    animation-delay: 0.08s;
+  }
+  .delay-2 {
+    animation-delay: 0.18s;
+  }
+  .delay-3 {
+    animation-delay: 0.3s;
+  }
+
+  /* La clase .reveal-ready la agrega el script solo si hay JS y movimiento permitido. */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+  }
+  .reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Transiciones de página nativas (View Transitions entre documentos). */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: 0.22s ease both vt-out;
+  }
+  ::view-transition-new(root) {
+    animation: 0.38s var(--ease) both vt-in;
+  }
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ---------- Móvil: espacio para el CTA fijo ---------- */
+@media (max-width: 63.99rem) {
+  body {
+    padding-bottom: calc(var(--sticky-h) + env(safe-area-inset-bottom));
+  }
+}

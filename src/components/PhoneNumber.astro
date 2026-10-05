@@ -1,0 +1,39 @@
+---
+/**
+ * Muestra el teléfono con ofuscación ligera contra scrapers:
+ * - Sin JS: se lee correctamente (los fragmentos señuelo están ocultos con CSS
+ *   y también para lectores de pantalla).
+ * - Con JS: se reemplaza por el texto limpio decodificado de data-tel-text.
+ */
+import { encodeForClient, getPhone } from '@/lib/content';
+
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+const { phoneDisplay } = await getPhone();
+const groups = phoneDisplay.split(' ');
+const decoys = ['7', '19', '04', '8'];
+---
+
+<span class:list={['phone-number', className]} data-tel-text={encodeForClient(phoneDisplay)}>
+  {groups.map((g, i) => (
+    <>
+      {i > 0 && ' '}
+      {g}
+      <span class="dx" aria-hidden="true">
+        {decoys[i % decoys.length]}
+      </span>
+    </>
+  ))}
+</span>
+
+<style>
+  .phone-number {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .dx {
+    display: none;
+  }
+</style>

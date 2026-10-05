@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { ROUTES, href, t } from '@/i18n';
+---
+
+<BaseLayout
+  lang="es"
+  title={t('es', 'notFound.title')}
+  description={t('es', 'notFound.body')}
+  path="/404/"
+  alternates={ROUTES.home}
+  noindex
+>
+  <section class="section">
+    <div class="wrap nf">
+      <p class="eyebrow">404</p>
+      <h1 class="display nf-title">{t('es', 'notFound.title')}</h1>
+      <p class="lead">{t('es', 'notFound.body')}</p>
+      <a class="link" href={href('es', 'home')}>
+        {t('es', 'notFound.back')}
+        <Icon name="arrow" class="arrow" />
+      </a>
+      <div class="en" lang="en">
+        <p class="h3">{t('en', 'notFound.title')}</p>
+        <p class="muted">{t('en', 'notFound.body')}</p>
+        <a class="link" href={href('en', 'home')}>
+          {t('en', 'notFound.back')}
+          <Icon name="arrow" class="arrow" />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+  .nf-title {
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    max-width: 16ch;
+  }
+  .en {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+</style>

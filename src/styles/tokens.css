@@ -1,0 +1,61 @@
+/*
+ * Tokens de color: ÚNICO archivo de paletas.
+ * El tema activo se define con <html data-theme="…">.
+ * El tema por defecto se elige en src/config/site.ts (DEFAULT_THEME).
+ * Verifica contraste con: npm run check:contrast
+ */
+
+/* Tema 1 · Azul, blanco y dorado (por defecto) */
+:root,
+[data-theme='azul'] {
+  --bg: #faf9f6;
+  --surface: #f0ede6;
+  --ink: #0e1a2b;
+  --ink-soft: #46505e;
+  --line: #d8d2c4;
+  --primary: #13294b;
+  --on-primary: #f7f4ec;
+  --on-primary-soft: #c3cad6;
+  --accent: #c09a48;
+  --on-accent: #0e1a2b;
+  --accent-strong: #846420;
+  --accent-on-primary: #d6b46c;
+  --cta-on-primary: #c09a48;
+  --on-cta-on-primary: #0e1a2b;
+}
+
+/* Tema 2 · Café terracota, guinda y blanco */
+[data-theme='terracota'] {
+  --bg: #fbf7f2;
+  --surface: #f3e9df;
+  --ink: #2a1714;
+  --ink-soft: #5c4641;
+  --line: #e0d2c4;
+  --primary: #641b2b;
+  --on-primary: #fbf4ee;
+  --on-primary-soft: #e6cfcb;
+  --accent: #a34c28;
+  --on-accent: #ffffff;
+  --accent-strong: #973f1d;
+  --accent-on-primary: #f0b08f;
+  --cta-on-primary: #f0b08f;
+  --on-cta-on-primary: #2a1714;
+}
+
+/* Tema 3 · Petróleo, piedra y latón (ver docs/investigacion.md) */
+[data-theme='petroleo'] {
+  --bg: #f6f4ef;
+  --surface: #ece8df;
+  --ink: #14232a;
+  --ink-soft: #44545b;
+  --line: #d6d0c3;
+  --primary: #163c47;
+  --on-primary: #f3f1ea;
+  --on-primary-soft: #c2d0d4;
+  --accent: #b58a3c;
+  --on-accent: #14232a;
+  --accent-strong: #7c5b1e;
+  --accent-on-primary: #dcb771;
+  --cta-on-primary: #b58a3c;
+  --on-cta-on-primary: #14232a;
+}

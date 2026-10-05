@@ -1,0 +1,98 @@
+# Build y despliegue a GitHub Pages.
+# Acciones fijadas por SHA (el comentario indica la versión). Dependabot las mantiene al día.
+name: Deploy a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Sin permisos por defecto; cada job pide solo lo que necesita.
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Dependencias (lockfile exacto)
+        run: npm ci
+
+      - name: Secretos
+        run: npm run check:secrets
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Auditoría de dependencias
+        run: npm audit --audit-level=low
+
+      # URL pública: usa las variables del repositorio si existen; si no, la deduce sola.
+      #   CUSTOM_DOMAIN definido  → https://CUSTOM_DOMAIN  y base "/"
+      #   repo USUARIO.github.io  → https://usuario.github.io y base "/"
+      #   cualquier otro repo     → https://usuario.github.io y base "/NOMBRE-DEL-REPO/"
+      - name: Calcular URL del sitio
+        env:
+          VAR_SITE_URL: ${{ vars.SITE_URL }}
+          VAR_BASE_PATH: ${{ vars.BASE_PATH }}
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          owner="${OWNER,,}"
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            site="https://${CUSTOM_DOMAIN}"; base="/"
+          elif [ "${REPO,,}" = "${owner}.github.io" ]; then
+            site="https://${owner}.github.io"; base="/"
+          else
+            site="https://${owner}.github.io"; base="/${REPO}/"
+          fi
+          echo "SITE_URL=${VAR_SITE_URL:-$site}" >> "$GITHUB_ENV"
+          echo "BASE_PATH=${VAR_BASE_PATH:-$base}" >> "$GITHUB_ENV"
+          echo "Sitio: ${VAR_SITE_URL:-$site}${VAR_BASE_PATH:-$base}"
+
+      - name: Build (incluye astro check y verify-dist)
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: npm run build
+
+      - name: Dominio propio (opcional)
+        if: ${{ vars.CUSTOM_DOMAIN != '' }}
+        env:
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: printf '%s\n' "$CUSTOM_DOMAIN" > dist/CNAME
+
+      - name: Subir artefacto
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

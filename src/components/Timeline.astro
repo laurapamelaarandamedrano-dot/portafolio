@@ -1,0 +1,173 @@
+---
+/** Línea de tiempo (reciente → antiguo). La línea se dibuja al entrar en pantalla. */
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  items: CollectionEntry<'experience'>[];
+  /** Muestra el texto de cada cargo (página Experiencia). */
+  detailed?: boolean;
+  dark?: boolean;
+  /** Nivel de encabezado de cada cargo, según la jerarquía de la página. */
+  headingLevel?: 'h2' | 'h3';
+}
+const { items, detailed = false, dark = false, headingLevel = 'h3' } = Astro.props;
+const Role = headingLevel;
+const rendered = await Promise.all(items.map(async (item) => ({ item, ...(await render(item)) })));
+---
+
+<ol role="list" class:list={['timeline', { 'is-dark': dark }]} data-reveal>
+  {rendered.map(({ item, Content }, i) => (
+    <li class="step">
+      <span class="index" aria-hidden="true">
+        {String(i + 1).padStart(2, '0')}
+      </span>
+      <div class="body">
+        <p class="area">{item.data.area}</p>
+        <Role class="role">{item.data.title}</Role>
+        {item.data.officialTitle && (
+          <p class="official" lang="es">
+            ({item.data.officialTitle})
+          </p>
+        )}
+        {detailed && (
+          <div class="detail">
+            <Content />
+          </div>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0 0 0 2.25rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 1px;
+    background: var(--accent);
+    transform-origin: top;
+  }
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: calc(-2.25rem + 0.35rem - 4px);
+    top: 2.25rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+  }
+  .step:first-child::before {
+    background: var(--accent);
+  }
+  .index {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent-strong);
+    padding-top: 0.35rem;
+  }
+  .area {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .role {
+    margin-top: 0.35rem;
+    font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .official {
+    margin-top: 0.25rem;
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+  }
+  .detail {
+    margin-top: 0.75rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  .is-dark .step {
+    border-color: color-mix(in srgb, var(--on-primary) 20%, transparent);
+  }
+  .is-dark .step::before {
+    background: var(--primary);
+    border-color: var(--accent-on-primary);
+  }
+  .is-dark .step:first-child::before,
+  .is-dark::before {
+    background: var(--accent-on-primary);
+  }
+  .is-dark .index {
+    color: var(--accent-on-primary);
+  }
+  .is-dark .area,
+  .is-dark .official,
+  .is-dark .detail {
+    color: var(--on-primary-soft);
+  }
+
+  /* Animación: la línea se dibuja y los cargos entran escalonados. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.reveal-ready) .timeline::before {
+      transform: scaleY(0);
+      transition: transform 1.4s var(--ease) 0.1s;
+    }
+    :global(.reveal-ready) .timeline :is(.step) {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease);
+    }
+    :global(.reveal-ready) .timeline:global(.is-visible)::before {
+      transform: scaleY(1);
+    }
+    :global(.reveal-ready) .timeline:global(.is-visible) .step {
+      opacity: 1;
+      transform: none;
+    }
+    :global(.reveal-ready) .timeline:global(.is-visible) .step:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    :global(.reveal-ready) .timeline:global(.is-visible) .step:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    :global(.reveal-ready) .timeline:global(.is-visible) .step:nth-child(4) {
+      transition-delay: 0.45s;
+    }
+    /* El contenedor no se desplaza: solo sus hijos. */
+    :global(.reveal-ready) .timeline[data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

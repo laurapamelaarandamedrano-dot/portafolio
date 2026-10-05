@@ -1,0 +1,36 @@
+---
+/** SOLO DESARROLLO. BaseLayout lo renderiza únicamente si import.meta.env.DEV. */
+import { THEMES } from '@/config/site';
+---
+
+<div class="theme-dev">
+  <label>
+    Tema (dev)
+    <select data-theme-select>
+      {THEMES.map((name) => (
+        <option value={name}>{name}</option>
+      ))}
+    </select>
+  </label>
+</div>
+
+<script>
+  import '../scripts/theme-dev.ts';
+</script>
+
+<style>
+  .theme-dev {
+    position: fixed;
+    right: 1rem;
+    bottom: 5.5rem;
+    z-index: 90;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg);
+    border: 1px dashed var(--ink-soft);
+    font-size: 0.8125rem;
+  }
+  select {
+    margin-left: 0.5rem;
+    font: inherit;
+  }
+</style>

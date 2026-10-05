@@ -1,0 +1,45 @@
+---
+/**
+ * Botón de llamada. El href `tel:` se ensambla en el cliente (anti-scraper).
+ * Sin JS, enlaza a la sección del teléfono en Contacto, donde el número es legible.
+ */
+import Icon from './Icon.astro';
+import { encodeForClient, getPhone } from '@/lib/content';
+import { href, t, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  label?: string;
+  variant?: 'primary' | 'ghost';
+  size?: 'md' | 'lg';
+  /** Marca este botón como el CTA principal de la pantalla (oculta el CTA fijo móvil). */
+  primary?: boolean;
+  class?: string;
+}
+const {
+  lang,
+  label = t(lang, 'cta.callNow'),
+  variant = 'primary',
+  size = 'md',
+  primary = false,
+  class: className = '',
+} = Astro.props;
+const { phoneE164 } = await getPhone();
+---
+
+<a
+  href={`${href(lang, 'contact')}#telefono`}
+  data-tel={encodeForClient(phoneE164)}
+  class:list={['btn', `btn--${variant}`, { 'btn--lg': size === 'lg' }, className]}
+  data-cta-primary={primary ? '' : undefined}
+>
+  <Icon name="phone" class="btn-icon" />
+  <span>{label}</span>
+</a>
+
+<style>
+  .btn-icon {
+    width: 1.15em;
+    height: 1.15em;
+  }
+</style>

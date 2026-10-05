@@ -1,0 +1,316 @@
+---
+import { Picture } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import { href, projectPath, t, withBase, type Lang } from '@/i18n';
+import { getProjects } from '@/lib/content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+const lang = project.data.lang;
+const { Content } = await render(project);
+
+// Página equivalente en el otro idioma (por translationKey).
+const siblings = await getCollection(
+  'projects',
+  (p) => p.data.translationKey === project.data.translationKey,
+);
+const alternates = Object.fromEntries(
+  siblings.map((p) => [p.data.lang, projectPath(p.data.lang, p.data.route)]),
+) as Record<Lang, string>;
+if (!alternates.es || !alternates.en) {
+  throw new Error(`Falta la traducción de ${project.id}`);
+}
+
+const all = await getProjects(lang);
+const i = all.findIndex((p) => p.id === project.id);
+const next = all[(i + 1) % all.length];
+const { title, kicker, summary, seoDescription, operator, region, kind, cover, coverAlt } =
+  project.data;
+---
+
+<BaseLayout
+  lang={lang}
+  title={title}
+  description={seoDescription}
+  path={projectPath(lang, project.data.route)}
+  alternates={alternates}
+  current="projects"
+  image={cover}
+  imageAlt={coverAlt}
+>
+  <nav class="wrap crumbs" aria-label={t(lang, 'a11y.breadcrumb')}>
+    <a href={href(lang, 'projects')}>{t(lang, 'nav.projects')}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{title}</span>
+  </nav>
+
+  <PageIntro eyebrow={kicker} heading={title} lead={summary} />
+
+  <div class="wrap facts-wrap">
+    <dl class="facts" data-reveal>
+      {operator && (
+        <div>
+          <dt>{t(lang, 'projects.operator')}</dt>
+          <dd>{operator}</dd>
+        </div>
+      )}
+      {region && (
+        <div>
+          <dt>{t(lang, 'projects.region')}</dt>
+          <dd>{region}</dd>
+        </div>
+      )}
+      <div>
+        <dt>{t(lang, 'projects.type')}</dt>
+        <dd>{kind}</dd>
+      </div>
+    </dl>
+  </div>
+
+  {cover ? (
+    <figure class="wrap cover">
+      <Picture
+        src={cover}
+        alt={coverAlt ?? ''}
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1280, 1800]}
+        sizes="(min-width: 82rem) 82rem, 100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+  ) : (
+    <div class="wrap">
+      <div class="typo-block" aria-hidden="true">
+        <span class="typo-kicker">{kicker}</span>
+        <span class="typo-title">{title}</span>
+      </div>
+    </div>
+  )}
+
+  <section class="section">
+    <div class="wrap body-grid">
+      <div class="prose" data-reveal>
+        <Content />
+      </div>
+      {project.data.sources.length > 0 && (
+        <aside class="sources" data-reveal>
+          <h2 class="sources-title">{t(lang, 'projects.sources')}</h2>
+          <ul role="list">
+            {project.data.sources.map((s) => (
+              <li>
+                <a href={s.url} rel="noopener noreferrer" target="_blank">
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
+    </div>
+  </section>
+
+  {project.data.gallery.length > 0 && (
+    <section class="section section--flush">
+      <div
+        class:list={['wrap', 'gallery', { 'gallery--single': project.data.gallery.length === 1 }]}
+      >
+        {project.data.gallery.map((g, gi) => (
+          <figure class:list={['photo', { 'photo--frame': gi === 0 }]} data-reveal>
+            <Picture
+              src={g.src}
+              alt={g.alt}
+              formats={['avif', 'webp']}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 64rem) 50vw, 100vw"
+              loading="lazy"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {next && next.id !== project.id && (
+    <nav class="wrap next" aria-label={t(lang, 'projects.next')}>
+      <a href={withBase(projectPath(lang, next.data.route))}>
+        <span class="next-label">{t(lang, 'projects.next')}</span>
+        <span class="next-title">
+          {next.data.title}
+          <Icon name="arrow" class="arrow" />
+        </span>
+      </a>
+    </nav>
+  )}
+</BaseLayout>
+
+<style>
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 2rem;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+  }
+  .crumbs a {
+    color: var(--ink-soft);
+    padding-block: 0.25rem;
+  }
+  .crumbs a:hover {
+    color: var(--ink);
+  }
+  .facts-wrap {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .facts {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+    padding-block: 1.5rem;
+    border-block: 1px solid var(--line);
+  }
+  .facts dt {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  .facts dd {
+    margin-top: 0.35rem;
+  }
+  @media (min-width: 48rem) {
+    .facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .cover :global(img) {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .typo-block {
+    display: grid;
+    align-content: end;
+    gap: 1rem;
+    min-height: clamp(14rem, 30vw, 24rem);
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    background: var(--primary);
+    color: var(--on-primary);
+    position: relative;
+  }
+  .typo-block::before {
+    content: '';
+    position: absolute;
+    top: clamp(1.5rem, 4vw, 3.5rem);
+    left: clamp(1.5rem, 4vw, 3.5rem);
+    width: 4rem;
+    height: 1px;
+    background: var(--accent-on-primary);
+  }
+  .typo-kicker {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-on-primary);
+  }
+  .typo-title {
+    font-size: clamp(2.25rem, 1.5rem + 4vw, 5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .body-grid {
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 64rem) {
+    .body-grid {
+      grid-template-columns: 8fr 4fr;
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+  .sources {
+    align-self: start;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--accent);
+    font-size: 0.875rem;
+  }
+  .sources-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+  }
+  .sources li + li {
+    margin-top: 0.6rem;
+  }
+  .sources a {
+    color: var(--ink);
+    text-decoration-color: var(--accent);
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+  .section--flush {
+    padding-top: 0;
+  }
+  .gallery {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .gallery :global(img) {
+    aspect-ratio: 4 / 3;
+  }
+  @media (min-width: 64rem) {
+    .gallery {
+      grid-template-columns: 7fr 5fr;
+      align-items: end;
+      gap: 3rem;
+    }
+    .gallery--single {
+      grid-template-columns: 8fr 4fr;
+    }
+    .gallery > :nth-child(2) {
+      margin-bottom: 4rem;
+    }
+  }
+  .next {
+    padding-bottom: var(--section);
+  }
+  .next a {
+    display: grid;
+    gap: 0.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .next-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  .next-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.6rem, 1.2rem + 2vw, 2.75rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  .next-title :global(.arrow) {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--accent-strong);
+  }
+</style>

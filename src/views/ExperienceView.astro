@@ -1,0 +1,94 @@
+---
+import { Picture } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import Timeline from '@/components/Timeline.astro';
+import { ROUTES, type Lang } from '@/i18n';
+import { block, getExperience, getPage } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'experience');
+const experience = await getExperience(lang);
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  path={ROUTES.experience[lang]}
+  alternates={ROUTES.experience}
+  current="experience"
+  image={page.data.image}
+  imageAlt={page.data.imageAlt}
+>
+  <PageIntro eyebrow={page.data.eyebrow} heading={page.data.heading} lead={page.data.lead} />
+
+  <section class="section section--top-tight">
+    <div class="wrap grid">
+      <Timeline items={experience} headingLevel="h2" />
+      {page.data.image && (
+        <figure class="photo photo--frame side-photo" data-reveal>
+          <Picture
+            src={page.data.image}
+            alt={page.data.imageAlt ?? ''}
+            formats={['avif', 'webp']}
+            widths={[400, 640, 900]}
+            sizes="(min-width: 64rem) 35vw, 100vw"
+            loading="lazy"
+          />
+        </figure>
+      )}
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="closing-title">
+    <div class="wrap closing">
+      <h2 id="closing-title" class="h2">
+        {block(page, 'closingTitle')}
+      </h2>
+      <div class="prose" data-reveal>
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section--top-tight {
+    padding-top: 1rem;
+  }
+  .grid {
+    display: grid;
+    gap: 3.5rem;
+  }
+  .side-photo {
+    margin-right: 0.9rem;
+  }
+  .side-photo :global(img) {
+    aspect-ratio: 4 / 5;
+  }
+  .closing {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 64rem) {
+    .grid {
+      grid-template-columns: 7fr 4fr;
+      gap: clamp(3rem, 7vw, 7rem);
+      align-items: start;
+    }
+    .side-photo {
+      position: sticky;
+      top: 7rem;
+    }
+    .closing {
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+/** Copia el número (Clipboard API con alternativa). Oculto sin JS. */
+import Icon from './Icon.astro';
+import { encodeForClient, getPhone } from '@/lib/content';
+import { t, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  id: string;
+}
+const { lang, id } = Astro.props;
+const { phoneDisplay } = await getPhone();
+const statusId = `${id}-status`;
+---
+
+<button
+  type="button"
+  class="btn btn--ghost copy-btn"
+  data-copy={encodeForClient(phoneDisplay)}
+  data-ok={t(lang, 'cta.copied')}
+  data-fail={t(lang, 'cta.copyFailed')}
+  aria-describedby={statusId}
+  hidden
+>
+  <Icon name="copy" class="copy-icon" />
+  <span data-copy-label>{t(lang, 'cta.copy')}</span>
+</button>
+<span id={statusId} class="visually-hidden" role="status" aria-live="polite"></span>
+
+<style>
+  .copy-icon {
+    width: 1.1em;
+    height: 1.1em;
+    transition: transform 0.3s var(--ease);
+  }
+  .copy-btn:global(.is-copied) .copy-icon {
+    transform: scale(0.85);
+  }
+  .copy-btn:global(.is-copied) {
+    border-style: dashed;
+  }
+</style>

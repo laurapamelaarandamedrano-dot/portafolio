@@ -1,0 +1,118 @@
+---
+import { Picture } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ROUTES, type Lang } from '@/i18n';
+import { block, getPage } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getPage(lang, 'profile');
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  path={ROUTES.profile[lang]}
+  alternates={ROUTES.profile}
+  current="profile"
+>
+  <section class="section profile">
+    <div class="wrap grid">
+      <div class="head">
+        <p class="eyebrow anim-rise delay-1">{page.data.eyebrow}</p>
+        <h1 class="display name anim-rise delay-2">{page.data.heading}</h1>
+        <p class="lead anim-rise delay-3">{page.data.lead}</p>
+      </div>
+      {page.data.image && (
+        <figure class="photo photo--frame portrait anim-fade">
+          <Picture
+            src={page.data.image}
+            alt={page.data.imageAlt ?? ''}
+            formats={['avif', 'webp']}
+            width={1200}
+            widths={[400, 640, 900, 1200]}
+            sizes="(min-width: 64rem) 40vw, 100vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </figure>
+      )}
+      <div class="prose body" data-reveal>
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="wrap">
+      <blockquote class="quote" data-reveal>
+        <p>{block(page, 'closingQuote')}</p>
+      </blockquote>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .profile {
+    padding-top: clamp(3.5rem, 2rem + 6vw, 7rem);
+  }
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .head {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .name {
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    max-width: 12ch;
+  }
+  .portrait {
+    margin-right: 0.9rem;
+  }
+  .portrait :global(img) {
+    aspect-ratio: 4 / 5;
+    object-position: 82% 30%;
+  }
+  /* En móvil el marco es 4:5: acercamiento fijo para dejar el fondo fuera. */
+  @media (max-width: 63.99rem) {
+    .portrait :global(img) {
+      object-position: 100% 30%;
+      transform: scale(1.42);
+      transform-origin: 100% 22%;
+    }
+  }
+  /* Encuadre cerrado del retrato: deja fuera los elementos de fondo a la izquierda. */
+  .portrait :global(picture) {
+    overflow: hidden;
+  }
+  @media (min-width: 64rem) {
+    .grid {
+      grid-template-columns: 7fr 5fr;
+      column-gap: clamp(3rem, 7vw, 7rem);
+      row-gap: 4rem;
+    }
+    .portrait {
+      grid-row: span 2;
+    }
+  }
+  .quote {
+    margin: 0;
+    padding-left: clamp(1.25rem, 4vw, 3rem);
+    border-left: 2px solid var(--accent);
+  }
+  .quote p {
+    font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    max-width: 30ch;
+  }
+</style>
