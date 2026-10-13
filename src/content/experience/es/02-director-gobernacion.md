@@ -1,6 +1,7 @@
 ---
 lang: es
-order: 2
+order: 3
 title: Director de Gobernación
+institution: Gobierno de Michoacán
 area: Gobernación
 ---

@@ -31,6 +31,6 @@ La Autopista Siglo XXI es el corredor carretero que conecta Pátzcuaro, Uruapan 
 
 Es una vía estratégica que comunica el centro de Michoacán con la costa y el puerto de Lázaro Cárdenas. Por ella circulan a diario personas, mercancías y transporte de carga, por lo que cualquier conflicto en sus plazas de cobro o tramos tiene efectos inmediatos en la región.
 
-## En mi trayectoria
+## En nuestra experiencia
 
-Forma parte de mi experiencia en proyectos carreteros de alto impacto, donde el diálogo con las comunidades y la atención oportuna de cada situación importan tanto como la obra.
+Forma parte de la trayectoria de Salvador J. Vazquez Villa en proyectos carreteros de alto impacto, donde la negociación con los actores del entorno, la gestión oportuna de riesgos y el seguimiento de los acuerdos son tan determinantes como la obra.

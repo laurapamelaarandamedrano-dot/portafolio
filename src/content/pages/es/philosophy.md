@@ -2,26 +2,26 @@
 lang: es
 key: philosophy
 title: Filosofía
-description: La forma de trabajar de Salvador J. Vazquez Villa, basada en escuchar, entender a las personas y construir confianza para llegar a acuerdos que perduran.
+description: Los principios con los que trabaja el equipo de Salvador J. Vazquez Villa, basados en rigor, estrategia, integridad y seguimiento para lograr acuerdos que perduran.
 eyebrow: Filosofía
-heading: Escuchar, entender y construir confianza.
-lead: Detrás de cada proyecto hay personas. Cuando se sienten escuchadas, los acuerdos llegan y, sobre todo, perduran.
+heading: Rigor, estrategia y resultados.
+lead: Cada proyecto exige un análisis preciso, una estrategia clara y la ejecución disciplinada de un equipo especializado. Así se construyen acuerdos que perduran.
 image: ../../../assets/photos/filosofia.jpeg
 imageAlt: Salvador J. Vazquez Villa conversa con productores del campo junto a una camioneta, en un camino de terracería.
 items:
-  - title: Escuchar con atención
-    text: Antes de proponer, entiendo. Cada caso tiene su historia, sus personas y sus tiempos, y la mejor solución empieza por conocerlos.
-  - title: Empatía con las personas
-    text: Ningún proyecto vale más que la dignidad de quienes viven a su alrededor. Ponerme en su lugar es lo que abre la conversación.
-  - title: Serenidad bajo presión
-    text: En los momentos críticos, la calma es una ventaja. Permite pensar con claridad y encontrar salidas donde otros solo ven obstáculos.
-  - title: Integridad y transparencia
-    text: Cada paso se da por la vía correcta y a la vista de quien confía en mí. La confianza es lo que hace duraderos los acuerdos.
-  - title: Presencia de principio a fin
-    text: Estoy presente desde la primera conversación hasta que el acuerdo se convierte en avance real.
-  - title: Discreción
-    text: Cada caso se trata con confidencialidad y respeto por la información de todas las partes.
+  - title: Diagnóstico riguroso
+    text: Antes de proponer, analizamos. Cada caso tiene antecedentes, actores e intereses propios, y la mejor estrategia parte de conocerlos a fondo.
+  - title: Visión estratégica
+    text: Cada intervención responde a un objetivo claro y a una ruta definida, con atención a los riesgos y a los tiempos del proyecto.
+  - title: Firmeza bajo presión
+    text: En los momentos críticos, el método y la experiencia permiten decidir con claridad y encontrar salidas donde otros solo ven obstáculos.
+  - title: Integridad y legalidad
+    text: Cada paso se da por la vía correcta, con apego a la normatividad y con total transparencia ante el cliente.
+  - title: Seguimiento de principio a fin
+    text: Acompañamos cada asunto desde el diagnóstico inicial hasta que el acuerdo se traduce en resultados concretos.
+  - title: Confidencialidad
+    text: Cada caso se maneja con estricta reserva y respeto por la información de todas las partes.
 blocks:
-  valuesTitle: Los principios que guían mi trabajo
-  closing: Sin atajos ni promesas vacías. Un acompañamiento serio, cercano y honesto, de principio a fin.
+  valuesTitle: Los principios que guían nuestro trabajo
+  closing: Sin atajos ni promesas vacías. Un trabajo profesional, riguroso y transparente, de principio a fin.
 ---

@@ -2,33 +2,31 @@
 lang: es
 key: home
 title: Salvador J. Vazquez Villa
-description: Negociación de alto nivel, liberación de derecho de vía, contención social y control de crisis para proyectos de infraestructura de alto impacto.
-eyebrow: Negociación · Riesgo · Diálogo social
+description: Negociación estratégica, liberación de derecho de vía, gestión de riesgos, control de crisis y soporte jurídico para proyectos de infraestructura de alto impacto.
+eyebrow: Negociación · Riesgo · Soporte jurídico
 heading: Acuerdos sólidos cuando hay más en juego.
-lead: Acompaño proyectos de infraestructura y situaciones complejas con negociación de alto nivel, manejo de riesgos y diálogo empático con las comunidades.
+lead: Respaldamos proyectos de infraestructura y asuntos de alta complejidad con negociación estratégica de alto nivel, gestión integral de riesgos y una interlocución institucional eficaz con todos los actores involucrados.
 image: ../../../assets/photos/hero.jpeg
 imageAlt: Salvador J. Vazquez Villa recorre a pie una zona de obra carretera junto a personal de seguridad, con un cerro al fondo.
 blocks:
-  heroNote: Conversación confidencial · Sin compromiso
+  heroNote: Consulta confidencial · Sin compromiso
   scrollLabel: Ir a la siguiente sección
   tickerLabel: Capacidades clave
-  whyEyebrow: Por qué trabajar conmigo
+  whyEyebrow: Por qué trabajar con nosotros
   whyTitle: Experiencia en el punto exacto donde los proyectos se detienen.
-  whyP1: Los grandes proyectos rara vez se detienen por la ingeniería. Se detienen cuando falta acuerdo con propietarios, con comunidades o con los actores de su entorno.
-  whyP2: Mi trayectoria me ha llevado una y otra vez a esos momentos, en el territorio, en la mesa y bajo presión. Ahí aprendí a escuchar antes de proponer, a leer el riesgo a tiempo y a construir acuerdos que perduran.
+  whyP1: Los grandes proyectos rara vez se detienen por la ingeniería. Se detienen cuando no existen acuerdos con propietarios, comunidades o los actores de su entorno.
+  whyP2: Una trayectoria en responsabilidades de alto nivel del servicio público, en el territorio, en la mesa de negociación y bajo presión, respalda nuestra capacidad para anticipar riesgos, conducir negociaciones complejas y construir acuerdos que perduran. La acompaña un equipo profesional altamente especializado.
   whyImageAlt: Retrato de Salvador J. Vazquez Villa, sonriente, con traje azul marino, camisa blanca y corbata roja.
   trajectoryEyebrow: Trayectoria
   trajectoryTitle: Experiencia probada en responsabilidades de alto nivel.
-  trajectoryText: Del más reciente al más antiguo.
-  directEyebrow: Trato directo
-  directTitle: Cuando el tema es delicado, usted habla directamente conmigo.
-  directText: Sin intermediarios ni recados. Escucho su caso de primera mano, le comparto una lectura honesta de la situación y lo acompaño de principio a fin.
+  trajectoryText: Ordenada por nivel de responsabilidad.
   servicesEyebrow: Capacidades clave
-  servicesTitle: Seis capacidades para que lo complejo avance.
+  servicesTitle: Ocho capacidades para que lo complejo avance.
+  servicesText: Cada asunto es atendido por un equipo profesional altamente especializado, con experiencia en negociación, gestión de riesgos y materia jurídica.
   servicesLink: Conocer las capacidades
   observatoryEyebrow: Mapa de trayectoria
   observatoryTitle: Experiencia probada en el territorio.
-  observatoryText: Corredores carreteros de alto impacto en el occidente de México que forman parte de mi trayectoria.
+  observatoryText: Corredores carreteros de alto impacto en el occidente de México que forman parte de la trayectoria de Salvador J. Vazquez Villa.
   mapTitle: Mapa esquemático de México
   mapDesc: Red de puntos conectados que dibuja el territorio de México, con los corredores Guadalajara–Zapotlanejo, Maravatío–Zitácuaro y Autopista Siglo XXI resaltados en el occidente del país.
   legendTitle: Nodos de la red
@@ -42,15 +40,19 @@ blocks:
   projectsLink: Ver todos los proyectos
 items:
   - title: Liberación de derecho de vía
-    text: Acuerdos justos con propietarios y comunidades para que la obra avance en el terreno.
+    text: Negociación y formalización de acuerdos con propietarios y núcleos agrarios para liberar frentes de obra en tiempo y forma.
   - title: Contención social
-    text: Escucha oportuna para que un desacuerdo no escale a conflicto.
+    text: Atención oportuna de inconformidades para evitar que un desacuerdo escale a conflicto.
   - title: Negociación bajo presión
-    text: Serenidad y método cuando hay plazos cortos y mucho en juego.
+    text: Método y estrategia cuando los plazos son cortos y hay mucho en juego.
   - title: Manejo de riesgos
-    text: Anticipar lo que puede venir y actuar a tiempo.
+    text: Identificación temprana de riesgos y planes de acción para mitigarlos.
   - title: Control de crisis
-    text: Calma, lectura del contexto y una salida clara en el momento crítico.
+    text: Diagnóstico inmediato, interlocución con las partes y una ruta de salida clara.
   - title: Relaciones públicas
-    text: Confianza con comunidades y actores clave, antes de necesitarla.
+    text: Relaciones institucionales sólidas con comunidades y actores clave.
+  - title: Seguimiento legal
+    text: Control puntual de procedimientos, plazos y compromisos hasta su cumplimiento.
+  - title: Revisión jurídico-contractual
+    text: Análisis de contratos, convenios e instrumentos para proteger sus intereses.
 ---

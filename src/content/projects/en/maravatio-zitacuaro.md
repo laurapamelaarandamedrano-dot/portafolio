@@ -33,6 +33,6 @@ The Maravatío–Zitácuaro branch connects two cities in eastern Michoacán. Ac
 
 A highway like this runs through municipalities and communities with very different needs. Its progress depends as much on the construction itself as on the dialogue between the concession holder, communities and local stakeholders: permits, rights of way, local agreements and timely attention to concerns.
 
-## In my track record
+## In our experience
 
-It is part of my experience with high-impact highway projects, where dialogue with communities and timely attention to every situation matter as much as the construction itself.
+It is part of Salvador J. Vazquez Villa's track record on high-impact highway projects, where negotiation with local stakeholders, timely risk management and follow-through on agreements are as decisive as the construction itself.

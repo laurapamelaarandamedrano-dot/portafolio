@@ -28,6 +28,6 @@ Red de Carreteras de Occidente (R.CO) operates and maintains a group of concessi
 
 Road gateways into a metropolitan area the size of Guadalajara carry heavy traffic, freight and communities along their route. Keeping them running requires constant coordination between the concession holder, local communities and every stakeholder around them.
 
-## In my track record
+## In our experience
 
-It is part of my experience with high-impact highway projects, where dialogue with communities and timely attention to every situation matter as much as the construction itself.
+It is part of Salvador J. Vazquez Villa's track record on high-impact highway projects, where negotiation with local stakeholders, timely risk management and follow-through on agreements are as decisive as the construction itself.

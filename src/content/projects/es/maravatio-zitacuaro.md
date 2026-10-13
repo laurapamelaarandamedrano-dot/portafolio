@@ -33,6 +33,6 @@ El ramal Maravatío–Zitácuaro conecta dos ciudades del oriente de Michoacán.
 
 Una carretera de este tipo atraviesa municipios y comunidades con necesidades distintas. Que avance depende tanto de la obra como de la conversación entre concesionaria, comunidades y actores locales: permisos, derecho de vía, acuerdos locales y atención oportuna de inconformidades.
 
-## En mi trayectoria
+## En nuestra experiencia
 
-Forma parte de mi experiencia en proyectos carreteros de alto impacto, donde el diálogo con las comunidades y la atención oportuna de cada situación importan tanto como la obra.
+Forma parte de la trayectoria de Salvador J. Vazquez Villa en proyectos carreteros de alto impacto, donde la negociación con los actores del entorno, la gestión oportuna de riesgos y el seguimiento de los acuerdos son tan determinantes como la obra.

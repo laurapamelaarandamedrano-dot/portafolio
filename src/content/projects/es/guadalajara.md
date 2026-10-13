@@ -28,6 +28,6 @@ Red de Carreteras de Occidente (R.CO) opera, mantiene y conserva un conjunto de 
 
 Los accesos carreteros a una zona metropolitana del tamaño de Guadalajara concentran tránsito intenso, transporte de carga y comunidades a lo largo de su trazo. Mantenerlos en operación exige coordinación constante entre la concesionaria, las comunidades y todos los actores de su entorno.
 
-## En mi trayectoria
+## En nuestra experiencia
 
-Forma parte de mi experiencia en proyectos carreteros de alto impacto, donde el diálogo con las comunidades y la atención oportuna de cada situación importan tanto como la obra.
+Forma parte de la trayectoria de Salvador J. Vazquez Villa en proyectos carreteros de alto impacto, donde la negociación con los actores del entorno, la gestión oportuna de riesgos y el seguimiento de los acuerdos son tan determinantes como la obra.

@@ -2,19 +2,19 @@
 lang: en
 key: profile
 title: About
-description: Who Salvador J. Vazquez Villa is, a specialist in high-stakes negotiation, social conflict containment, risk management and crisis management.
+description: Salvador J. Vazquez Villa, a specialist in high-stakes negotiation, risk management and crisis management, leading a highly specialized professional team.
 eyebrow: About
 heading: Salvador J. Vazquez Villa
-lead: Negotiation, dialogue and composure for the moments when a project needs them most.
+lead: Strategic negotiation, risk management and legal support for a project's decisive moments.
 image: ../../../assets/photos/perfil oficial.jpeg
 imageAlt: Portrait of Salvador J. Vazquez Villa, smiling, in a navy suit, white shirt and red tie.
 blocks:
-  closingQuote: My job is to help the parties understand each other, and to turn what is agreed into progress.
+  closingQuote: Our job is to secure solid agreements and turn what is agreed into results.
 ---
 
-Over the course of his career, Salvador J. Vazquez Villa has served as **Undersecretary for Human Rights and Population** (Subsecretario de Derechos Humanos y Población), **Director of Governance** (Director de Gobernación), **Acting Secretary of Government** (Encargado de Despacho del Secretario de Gobierno) and **Undersecretary for Governance** (Subsecretario de Gobernación).
+He holds a law degree and a master's degree in Law from the Universidad Michoacana de San Nicolás de Hidalgo, and a master's degree in Transparency and Anti-Corruption from the Universidad Virtual del Estado de Michoacán. In the Government of Michoacán he has served as **Acting Secretary of Government** (Encargado de Despacho del Secretario de Gobierno), **Undersecretary for Governance** (Subsecretario de Gobernación), **Director of Governance** (Director de Gobernación) and **Undersecretary for Human Rights and Population** (Subsecretario de Derechos Humanos y Población).
 
-Throughout that career he has been present at moments of high tension, on the ground, at the negotiating table and alongside communities and infrastructure projects. That is where the capabilities that set him apart come from:
+That experience in domestic policy, governance and public administration, on the ground and at high-level negotiating tables, is the foundation of the capabilities he now offers alongside a highly specialized professional team:
 
 - Right-of-way acquisition.
 - Social conflict containment.
@@ -22,11 +22,13 @@ Throughout that career he has been present at moments of high tension, on the gr
 - Risk management.
 - Crisis management.
 - Public relations.
+- Legal follow-up.
+- Legal and contract review.
 
-## How I work
+## How we work
 
-I listen before I propose. I keep people at the center and stay calm when things get complicated. I work directly, with integrity and discretion, and I stay with every case from start to finish.
+Every matter starts with a rigorous assessment. Based on it, we define a strategy, assign the specialized team the case requires and follow up closely until agreements turn into results. We work with integrity, confidentiality and full regulatory compliance.
 
 ## Let's talk
 
-If you have a project facing resistance or a sensitive situation, the quickest way to find out how I can help is a conversation.
+If your project is facing resistance or a highly complex matter, a confidential consultation is the quickest way to find out how we can help.

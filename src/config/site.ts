@@ -10,3 +10,6 @@ export type Theme = (typeof THEMES)[number];
 export const DEFAULT_THEME: Theme = 'azul';
 
 export const PERSON_NAME = 'Salvador J. Vazquez Villa';
+
+/** CV en PDF (solo en español). Para actualizarlo, reemplaza el archivo en public/documentos/. */
+export const CV_PATH = '/documentos/cv-salvador-j-vazquez-villa.pdf';

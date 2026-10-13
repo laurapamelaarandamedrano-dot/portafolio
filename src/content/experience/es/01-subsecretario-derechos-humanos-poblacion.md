@@ -1,6 +1,7 @@
 ---
 lang: es
-order: 1
+order: 4
 title: Subsecretario de Derechos Humanos y Población
+institution: Gobierno de Michoacán
 area: Derechos humanos y población
 ---

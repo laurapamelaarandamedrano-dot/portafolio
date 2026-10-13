@@ -57,9 +57,9 @@ const FORBIDDEN = [
   /\bRFC\b/,
   /persona f[ií]sica/i,
   /r[ée]gimen fiscal/i,
-  /\bsomos (una|un) /i,
-  /nuestr[oa]s? (equipo|clientes|firma|despacho|empresa)/i,
-  /\bour (team|clients|firm)\b/i,
+  // El sitio se presenta como equipo profesional; solo se excluye la imagen de firma legal.
+  /nuestr[oa]s? (firma|despacho)/i,
+  /\bour firm\b/i,
   // Estilo editorial: la trayectoria se redacta en pasado.
   /cargo actual|actualmente se desempeña|en funciones|currently serves|current role/i,
 ];

@@ -2,7 +2,7 @@
 import CallButton from './CallButton.astro';
 import Icon from './Icon.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import { PERSON_NAME } from '@/config/site';
+import Logo from './Logo.astro';
 import { NAV, href, t, type Lang, type RouteKey } from '@/i18n';
 
 interface Props {
@@ -13,14 +13,12 @@ interface Props {
   overlay?: boolean;
 }
 const { lang, alternates, current, overlay = false } = Astro.props;
-const [first, ...rest] = PERSON_NAME.split(' ');
 ---
 
 <header class:list={['site-header', { 'is-overlay': overlay }]} data-header>
   <div class="wrap bar">
     <a class="brand" href={href(lang, 'home')}>
-      <span class="brand-first">{first}</span>
-      <span class="brand-rest">{rest.join(' ')}</span>
+      <Logo />
     </a>
 
     <button
@@ -74,22 +72,9 @@ const [first, ...rest] = PERSON_NAME.split(' ');
   }
   .brand {
     display: inline-flex;
-    flex-direction: column;
-    line-height: 1.1;
+    color: inherit;
     text-decoration: none;
-    padding-block: 0.5rem;
-  }
-  .brand-first {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent-strong);
-  }
-  .brand-rest {
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: -0.005em;
+    padding-block: 0.6rem;
   }
 
   .nav-list {
@@ -183,9 +168,6 @@ const [first, ...rest] = PERSON_NAME.split(' ');
       opacity: 0;
       transition: opacity 0.35s var(--ease);
     }
-    .site-header.is-overlay .brand-first {
-      color: var(--accent-on-primary);
-    }
     .site-header.is-overlay :global(.lang a) {
       color: var(--on-primary-soft);
     }
@@ -206,10 +188,6 @@ const [first, ...rest] = PERSON_NAME.split(' ');
     .site-header.is-overlay:global(.is-solid)::before,
     :global(.menu-open) .site-header.is-overlay::before {
       opacity: 1;
-    }
-    .site-header.is-overlay:global(.is-solid) .brand-first,
-    :global(.menu-open) .site-header.is-overlay .brand-first {
-      color: var(--accent-strong);
     }
     .site-header.is-overlay:global(.is-solid) :global(.lang a),
     :global(.menu-open) .site-header.is-overlay :global(.lang a) {

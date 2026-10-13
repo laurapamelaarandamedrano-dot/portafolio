@@ -1,7 +1,7 @@
 ---
 /**
  * Inicio (es/en). Secuencia: header transparente → hero (foto + red ambiental) →
- * franja de capacidades → por qué trabajar conmigo → trayectoria → trato directo →
+ * franja de capacidades → por qué trabajar con nosotros → trayectoria →
  * capacidades (mosaico) → observatorio (mapa-red + cifras) → proyectos destacados →
  * cierre de conversión (BaseLayout) → footer.
  */
@@ -13,6 +13,7 @@ import NetworkMap from '@/components/NetworkMap.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
 import Ticker from '@/components/Ticker.astro';
 import Timeline from '@/components/Timeline.astro';
+import { CV_PATH } from '@/config/site';
 import { ROUTES, href, projectPath, t, withBase, type Lang } from '@/i18n';
 import { block, getExperience, getPage, getProjects } from '@/lib/content';
 
@@ -23,6 +24,8 @@ import negotiationPhoto from '@/assets/photos/autopista-sigloxxi-02.jpeg';
 import riskPhoto from '@/assets/photos/autopista-guadalajara.jpeg';
 import crisisPhoto from '@/assets/photos/autopista-maravatio-02.jpeg';
 import relationsPhoto from '@/assets/photos/experiencia.jpeg';
+import legalPhoto from '@/assets/photos/autopista-sigloxxi.jpeg';
+import contractsPhoto from '@/assets/photos/perfil.jpeg';
 
 interface Props {
   lang: Lang;
@@ -56,6 +59,8 @@ const capabilityMeta = [
   { id: 'risk', photo: riskPhoto, size: 'd' },
   { id: 'crisis', photo: crisisPhoto, size: 'e' },
   { id: 'public-relations', photo: relationsPhoto, size: 'f' },
+  { id: 'legal-follow-up', photo: legalPhoto, size: 'g' },
+  { id: 'contract-review', photo: contractsPhoto, size: 'h' },
 ] as const;
 const capabilities = page.data.items.map((item, i) => {
   const meta = capabilityMeta[i];
@@ -160,7 +165,7 @@ const legend = legendRefs.flatMap((ref) => {
   {/* Franja de capacidades en movimiento */}
   <Ticker label={block(page, 'tickerLabel')} items={capabilities.map((c) => c.title)} />
 
-  {/* Por qué trabajar conmigo */}
+  {/* Por qué trabajar con nosotros */}
   <section id="why" class="section why" aria-labelledby="why-title">
     <div class="wrap why-grid">
       <div class="why-text" data-reveal>
@@ -198,24 +203,17 @@ const legend = legendRefs.flatMap((ref) => {
           {t(lang, 'experience.view')}
           <Icon name="arrow" class="arrow" />
         </a>
+        <a class="link" href={withBase(CV_PATH)} download>
+          {t(lang, 'experience.cv')}
+          <Icon name="arrow" class="arrow" />
+        </a>
       </div>
       <Timeline items={experience} />
     </div>
   </section>
 
-  {/* Trato directo */}
-  <section class="section direct" aria-labelledby="direct-title">
-    <div class="wrap direct-grid" data-reveal>
-      <p class="eyebrow">{block(page, 'directEyebrow')}</p>
-      <h2 id="direct-title" class="direct-title">
-        {block(page, 'directTitle')}
-      </h2>
-      <p class="lead direct-text">{block(page, 'directText')}</p>
-    </div>
-  </section>
-
   {/* Capacidades: mosaico editorial de tamaños distintos */}
-  <section class="section section--flush-top" aria-labelledby="capabilities-title">
+  <section class="section" aria-labelledby="capabilities-title">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <div>
@@ -223,6 +221,7 @@ const legend = legendRefs.flatMap((ref) => {
           <h2 id="capabilities-title" class="h2 strong">
             {block(page, 'servicesTitle')}
           </h2>
+          <p class="section-text">{block(page, 'servicesText')}</p>
         </div>
         <a class="link" href={capabilitiesUrl}>
           {block(page, 'servicesLink')}
@@ -376,12 +375,11 @@ const legend = legendRefs.flatMap((ref) => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 30%;
+    object-position: 45% 35%;
   }
   .hero-media :global(img),
   .hero-video {
     filter: saturate(0.65) contrast(1.05);
-    transform: scale(1.04);
   }
   .hero-video {
     position: absolute;
@@ -494,12 +492,13 @@ const legend = legendRefs.flatMap((ref) => {
       display: none;
     }
   }
+  /* Movimiento sutil: un acercamiento mayor recorta a las personas de la foto. */
   @keyframes kenburns {
     from {
-      transform: scale(1.04) translate3d(0, 0, 0);
+      transform: scale(1) translate3d(0, 0, 0);
     }
     to {
-      transform: scale(1.14) translate3d(-1.5%, -1%, 0);
+      transform: scale(1.05) translate3d(-0.5%, -0.5%, 0);
     }
   }
   @keyframes scroll-dot {
@@ -511,7 +510,7 @@ const legend = legendRefs.flatMap((ref) => {
     }
   }
 
-  /* ---------- Por qué trabajar conmigo ---------- */
+  /* ---------- Por qué trabajar con nosotros ---------- */
   .why-grid {
     display: grid;
     gap: 3.5rem;
@@ -529,19 +528,14 @@ const legend = legendRefs.flatMap((ref) => {
     color: var(--ink-soft);
     font-size: 1.125rem;
   }
+  /* Retrato completo: el marco sigue la proporción original de la foto (5:7). */
   .why-photo {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 7;
     margin-right: 0.9rem;
     max-width: 30rem;
   }
-  /* Encuadre cerrado del retrato: deja fuera los elementos de fondo a la izquierda. */
-  .why-photo :global(picture) {
-    overflow: hidden;
-  }
   .why-photo :global(img) {
-    object-position: 100% 30%;
-    transform: scale(1.42);
-    transform-origin: 100% 22%;
+    object-position: 50% 20%;
   }
   @media (min-width: 64rem) {
     .why-grid {
@@ -578,28 +572,7 @@ const legend = legendRefs.flatMap((ref) => {
     }
   }
 
-  /* ---------- Trato directo ---------- */
-  .direct-grid {
-    display: grid;
-    gap: 1.5rem;
-    padding-left: clamp(1.25rem, 4vw, 3rem);
-    border-left: 2px solid var(--accent);
-  }
-  .direct-title {
-    font-size: clamp(2rem, 1.3rem + 3vw, 3.75rem);
-    font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    max-width: 22ch;
-  }
-  .direct-text {
-    max-width: 52ch;
-  }
-
   /* ---------- Encabezado de sección con enlace ---------- */
-  .section--flush-top {
-    padding-top: 0;
-  }
   .section-head {
     display: flex;
     flex-wrap: wrap;
@@ -611,8 +584,14 @@ const legend = legendRefs.flatMap((ref) => {
   .section-head .h2 {
     margin-top: 1rem;
   }
+  .section-text {
+    margin-top: 1rem;
+    max-width: 52ch;
+    color: var(--ink-soft);
+    font-size: 1.125rem;
+  }
 
-  /* ---------- Mosaico de capacidades (6 bloques de tamaños distintos) ---------- */
+  /* ---------- Mosaico de capacidades (8 bloques de tamaños distintos) ---------- */
   .mosaic {
     display: grid;
     gap: 0.75rem;
@@ -749,6 +728,14 @@ const legend = legendRefs.flatMap((ref) => {
     .tile--f {
       grid-column: 10 / span 3;
       grid-row: 3 / span 2;
+    }
+    .tile--g {
+      grid-column: 1 / span 6;
+      grid-row: 5;
+    }
+    .tile--h {
+      grid-column: 7 / span 6;
+      grid-row: 5;
     }
   }
   @media (min-width: 64rem) {

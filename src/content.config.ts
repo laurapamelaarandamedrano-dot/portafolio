@@ -44,6 +44,7 @@ const experience = defineCollection({
     order: z.number().int(),
     title: z.string(),
     officialTitle: z.string().optional(),
+    institution: z.string().optional(),
     area: z.string(),
   }),
 });

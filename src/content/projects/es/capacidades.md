@@ -6,75 +6,95 @@ order: 5
 category: support
 title: Capacidades
 kicker: Capacidades clave
-summary: Liberación de derecho de vía, contención social, negociación de alto nivel bajo presión, manejo de riesgos, control de crisis y relaciones públicas. Seis capacidades para que los proyectos complejos avancen.
-seoDescription: Capacidades de Salvador J. Vazquez Villa en derecho de vía, contención social, negociación bajo presión, manejo de riesgos, control de crisis y relaciones públicas.
-kind: Experiencia aplicada a proyectos complejos
+summary: Liberación de derecho de vía, contención social, negociación bajo presión, manejo de riesgos, control de crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual, a cargo de un equipo altamente especializado.
+seoDescription: Derecho de vía, contención social, negociación, riesgos, crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual para proyectos complejos.
+kind: Soluciones integrales para proyectos complejos
 cover: ../../../assets/photos/experiencia.jpeg
 coverAlt: Saludo de manos entre participantes con casco y chaleco de obra durante un recorrido por un puente vehicular.
 ---
 
-Los proyectos de gran escala rara vez se detienen por la ingeniería. Se detienen cuando falta acuerdo. Estas son las capacidades con las que acompaño esos momentos.
+Los proyectos de gran escala rara vez se detienen por la ingeniería. Se detienen cuando no existen acuerdos o cuando los riesgos no se atienden a tiempo. Para esos momentos ofrecemos ocho capacidades, respaldadas por un equipo profesional altamente especializado en negociación, gestión de riesgos y materia jurídica.
 
 <h2 id="right-of-way">Liberación de derecho de vía</h2>
 
-La obra solo avanza si el terreno está disponible, y el terreno tiene dueños, historias y expectativas.
+La obra solo avanza si el terreno está disponible. Conducimos el proceso de principio a fin, con método y apego a la normatividad aplicable.
 
-- Diálogo respetuoso y paciente con propietarios y comunidades.
-- Lectura de cada caso para encontrar acuerdos justos y viables.
-- Acompañamiento cercano hasta que el acuerdo se concreta.
+- Negociación con propietarios, ejidos y comunidades.
+- Análisis técnico y jurídico de cada predio para alcanzar acuerdos viables.
+- Formalización y seguimiento hasta la entrega de los frentes de obra.
 
-**Lo que usted gana:** frentes de obra disponibles y relaciones de confianza con el entorno del proyecto.
+**Resultado:** frentes de obra disponibles en tiempo y un entorno favorable para la ejecución del proyecto.
 
 <h2 id="social-containment">Contención social</h2>
 
-Una inconformidad atendida a tiempo rara vez se convierte en conflicto. Escuchar primero cambia el rumbo de la conversación.
+Una inconformidad atendida a tiempo rara vez se convierte en conflicto. La intervención oportuna protege la continuidad de la operación.
 
-- Presencia oportuna cuando surge el desacuerdo.
-- Escucha empática para entender la causa de fondo.
-- Salidas que reconocen las preocupaciones legítimas de las personas.
+- Presencia inmediata cuando surge el desacuerdo.
+- Diagnóstico de las causas de fondo y de los actores involucrados.
+- Soluciones viables que permiten reanudar los trabajos.
 
-**Lo que usted gana:** menos interrupciones y un entorno social más estable.
+**Resultado:** menos interrupciones y un entorno social estable.
 
 <h2 id="negotiation">Negociación de alto nivel bajo presión</h2>
 
-Plazos cortos, posiciones firmes y mucho en juego. En ese escenario, la serenidad y el método marcan la diferencia.
+Plazos cortos, posiciones firmes y mucho en juego. En ese escenario, la estrategia y el método marcan la diferencia.
 
-- Preparación rigurosa de cada mesa.
-- Conducción de la conversación con firmeza y respeto.
-- Acuerdos claros que todas las partes pueden sostener.
+- Preparación rigurosa de cada mesa de negociación.
+- Conducción firme e institucional de la interlocución.
+- Acuerdos claros, documentados y sostenibles para todas las partes.
 
-**Lo que usted gana:** decisiones que avanzan aun en las condiciones más tensas.
+**Resultado:** decisiones que avanzan aun en las condiciones más complejas.
 
 <h2 id="risk">Manejo de riesgos</h2>
 
-El mejor conflicto es el que se anticipa. Detectar a tiempo los riesgos sociales y de entorno protege la inversión y a las personas.
+El mejor conflicto es el que se anticipa. Detectar a tiempo los riesgos sociales, políticos y de entorno protege la inversión.
 
 - Mapeo de actores, intereses y puntos sensibles.
-- Señales tempranas antes de que un tema escale.
-- Recomendaciones prácticas para prevenir.
+- Alertas tempranas antes de que un tema escale.
+- Planes de acción y recomendaciones de mitigación.
 
-**Lo que usted gana:** visibilidad sobre lo que puede venir y tiempo para actuar.
+**Resultado:** visibilidad sobre lo que puede venir y margen para actuar.
 
 <h2 id="crisis">Control de crisis</h2>
 
-Cuando la situación ya es crítica, se necesita alguien que mantenga la calma, entienda el contexto y abra una salida.
+Cuando la situación ya es crítica, se requiere capacidad de respuesta inmediata, lectura precisa del contexto y una ruta de salida.
 
 - Evaluación inmediata de la situación.
 - Interlocución directa con las partes involucradas.
-- Estabilización y ruta de salida, sin perder de vista a las personas.
+- Estabilización y plan de salida.
 
-**Lo que usted gana:** respuesta rápida y serena cuando más se necesita.
+**Resultado:** una respuesta rápida y ordenada cuando más se necesita.
 
 <h2 id="public-relations">Relaciones públicas</h2>
 
-La confianza se construye antes de necesitarla. Las buenas relaciones con comunidades y actores clave hacen que todo lo demás sea más sencillo.
+Las relaciones institucionales sólidas con comunidades, autoridades y actores clave facilitan cada etapa del proyecto.
 
-- Comunicación clara, honesta y oportuna.
-- Vínculos de confianza con comunidades y líderes locales.
-- Presencia cercana durante toda la vida del proyecto.
+- Comunicación clara, oportuna y consistente.
+- Vinculación con autoridades, liderazgos locales y actores estratégicos.
+- Presencia constante durante toda la vida del proyecto.
 
-**Lo que usted gana:** una reputación sólida y un entorno dispuesto al diálogo.
+**Resultado:** una reputación sólida y un entorno abierto a la negociación.
+
+<h2 id="legal-follow-up">Seguimiento legal</h2>
+
+Un acuerdo o un procedimiento solo genera certeza cuando se le da seguimiento puntual hasta su conclusión.
+
+- Control de procedimientos, plazos y requerimientos ante autoridades.
+- Seguimiento al cumplimiento de acuerdos y compromisos.
+- Reportes periódicos sobre el estado de cada asunto.
+
+**Resultado:** certeza jurídica y control sobre cada etapa del proceso.
+
+<h2 id="contract-review">Revisión jurídico-contractual</h2>
+
+Los contratos, convenios e instrumentos bien estructurados previenen conflictos futuros y protegen los intereses del proyecto.
+
+- Análisis de contratos, convenios y acuerdos con terceros.
+- Identificación de riesgos y obligaciones relevantes.
+- Recomendaciones para fortalecer cada instrumento.
+
+**Resultado:** instrumentos sólidos que protegen su inversión.
 
 ## Cómo empezamos
 
-Todo comienza con una conversación confidencial. Escucho su caso, le comparto una lectura honesta de la situación y, si decidimos trabajar juntos, definimos el alcance y la forma de acompañamiento. Cada caso es único; por eso no prometo resultados, sí un trabajo serio, cercano y transparente.
+Todo comienza con una consulta confidencial. Analizamos su caso, le presentamos un diagnóstico objetivo y, si decidimos trabajar juntos, definimos el alcance, el equipo asignado y la forma de colaboración. Cada asunto es distinto; por eso no prometemos resultados, sí un trabajo profesional, riguroso y transparente.

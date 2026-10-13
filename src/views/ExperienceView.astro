@@ -3,8 +3,10 @@ import { Picture } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageIntro from '@/components/PageIntro.astro';
+import Icon from '@/components/Icon.astro';
 import Timeline from '@/components/Timeline.astro';
-import { ROUTES, type Lang } from '@/i18n';
+import { CV_PATH } from '@/config/site';
+import { ROUTES, t, withBase, type Lang } from '@/i18n';
 import { block, getExperience, getPage } from '@/lib/content';
 
 interface Props {
@@ -29,6 +31,12 @@ const { Content } = await render(page);
   <PageIntro eyebrow={page.data.eyebrow} heading={page.data.heading} lead={page.data.lead} />
 
   <section class="section section--top-tight">
+    <div class="wrap cv">
+      <a class="btn btn--ghost" href={withBase(CV_PATH)} download>
+        {t(lang, 'experience.cv')}
+        <Icon name="arrow" class="arrow" />
+      </a>
+    </div>
     <div class="wrap grid">
       <Timeline items={experience} headingLevel="h2" />
       {page.data.image && (
@@ -61,6 +69,9 @@ const { Content } = await render(page);
 <style>
   .section--top-tight {
     padding-top: 1rem;
+  }
+  .cv {
+    margin-bottom: 2.5rem;
   }
   .grid {
     display: grid;

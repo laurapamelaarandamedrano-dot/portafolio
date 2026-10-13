@@ -2,23 +2,23 @@
 lang: en
 key: contact
 title: Contact
-description: Call Salvador J. Vazquez Villa directly to talk about your project or situation. Confidential conversation, no commitment.
+description: Contact Salvador J. Vazquez Villa's team to discuss your project or matter. Confidential consultation, no commitment.
 eyebrow: Contact
-heading: Let's talk about your project.
-lead: One conversation is enough to understand your situation and tell you plainly how I can help.
+heading: Let's review your project.
+lead: One consultation is enough to understand your case and show you clearly how we can help.
 steps:
-  - title: I listen to your case
-    text: You walk me through the situation, knowing everything is treated confidentially.
-  - title: I share an honest reading
-    text: Together we identify the risks, the timing and the people involved.
+  - title: We learn about your case
+    text: You walk us through the situation, knowing all information is handled in strict confidence.
+  - title: We present an assessment
+    text: We identify the risks, timelines and stakeholders involved, and share an objective evaluation.
   - title: We define the next step
-    text: If we decide to work together, we agree on scope and how I will support you.
+    text: If we decide to work together, we agree on scope, the assigned team and how we will collaborate.
 blocks:
   stepsTitle: What to expect from the first call
   phoneTitle: Call directly
-  reassure: Confidential conversation · No commitment
+  reassure: Confidential consultation · No commitment
   privacyNote: This site has no forms and collects no data. To protect your information, phone is the only channel.
   ctaEyebrow: Contact
-  ctaTitle: Is your project facing resistance or a sensitive situation? Let's talk.
-  ctaText: One confidential conversation is enough to understand your situation and tell you plainly how I can help.
+  ctaTitle: Is your project facing resistance or a highly complex matter? Let's talk.
+  ctaText: One confidential consultation is enough to understand your case and show you clearly how we can help.
 ---

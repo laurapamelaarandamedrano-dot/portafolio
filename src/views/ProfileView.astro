@@ -2,7 +2,9 @@
 import { Picture } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { ROUTES, type Lang } from '@/i18n';
+import Icon from '@/components/Icon.astro';
+import { CV_PATH } from '@/config/site';
+import { ROUTES, t, withBase, type Lang } from '@/i18n';
 import { block, getPage } from '@/lib/content';
 
 interface Props {
@@ -27,6 +29,10 @@ const { Content } = await render(page);
         <p class="eyebrow anim-rise delay-1">{page.data.eyebrow}</p>
         <h1 class="display name anim-rise delay-2">{page.data.heading}</h1>
         <p class="lead anim-rise delay-3">{page.data.lead}</p>
+        <a class="btn btn--ghost cv anim-rise delay-3" href={withBase(CV_PATH)} download>
+          {t(lang, 'experience.cv')}
+          <Icon name="arrow" class="arrow" />
+        </a>
       </div>
       {page.data.image && (
         <figure class="photo photo--frame portrait anim-fade">
@@ -69,29 +75,23 @@ const { Content } = await render(page);
     display: grid;
     gap: 1.5rem;
   }
+  .cv {
+    justify-self: start;
+  }
   .name {
     font-weight: 600;
     letter-spacing: -0.035em;
     max-width: 12ch;
   }
   .portrait {
+    align-self: start;
     margin-right: 0.9rem;
   }
+  /* Retrato completo: el marco sigue la proporción original de la foto (5:7). */
   .portrait :global(img) {
-    aspect-ratio: 4 / 5;
-    object-position: 82% 30%;
-  }
-  /* En móvil el marco es 4:5: acercamiento fijo para dejar el fondo fuera. */
-  @media (max-width: 63.99rem) {
-    .portrait :global(img) {
-      object-position: 100% 30%;
-      transform: scale(1.42);
-      transform-origin: 100% 22%;
-    }
-  }
-  /* Encuadre cerrado del retrato: deja fuera los elementos de fondo a la izquierda. */
-  .portrait :global(picture) {
-    overflow: hidden;
+    height: auto;
+    aspect-ratio: 5 / 7;
+    object-position: 50% 20%;
   }
   @media (min-width: 64rem) {
     .grid {

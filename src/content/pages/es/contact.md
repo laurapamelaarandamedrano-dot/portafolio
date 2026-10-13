@@ -2,23 +2,23 @@
 lang: es
 key: contact
 title: Contacto
-description: Llame directamente a Salvador J. Vazquez Villa para conversar sobre su proyecto o situación. Conversación confidencial y sin compromiso.
+description: Comuníquese con el equipo de Salvador J. Vazquez Villa para analizar su proyecto o asunto. Consulta confidencial y sin compromiso.
 eyebrow: Contacto
-heading: Conversemos sobre su proyecto.
-lead: Una conversación basta para entender su caso y decirle con franqueza cómo puedo ayudarle.
+heading: Analicemos su proyecto.
+lead: Una consulta basta para conocer su caso y presentarle con claridad cómo podemos ayudarle.
 steps:
-  - title: Escucho su caso
-    text: Me cuenta la situación con la tranquilidad de que todo se trata con confidencialidad.
-  - title: Le comparto una lectura honesta
-    text: Identificamos juntos los riesgos, los tiempos y las personas involucradas.
+  - title: Conocemos su caso
+    text: Nos expone la situación con la certeza de que toda la información se maneja con estricta confidencialidad.
+  - title: Le presentamos un diagnóstico
+    text: Identificamos los riesgos, los tiempos y los actores involucrados, y le compartimos una evaluación objetiva.
   - title: Definimos el siguiente paso
-    text: Si decidimos trabajar juntos, acordamos alcance y forma de acompañamiento.
+    text: Si decidimos trabajar juntos, acordamos el alcance, el equipo asignado y la forma de colaboración.
 blocks:
   stepsTitle: Qué esperar de la primera llamada
   phoneTitle: Llame directamente
-  reassure: Conversación confidencial · Sin compromiso
-  privacyNote: Este sitio no tiene formularios ni recopila datos. Para cuidar su información, el único canal es el teléfono.
+  reassure: Consulta confidencial · Sin compromiso
+  privacyNote: Este sitio no tiene formularios ni recopila datos. Para proteger su información, el único canal es el teléfono.
   ctaEyebrow: Contacto
-  ctaTitle: ¿Su proyecto enfrenta resistencia o una situación delicada? Hablemos.
-  ctaText: Una conversación confidencial basta para entender su caso y decirle con franqueza cómo puedo ayudarle.
+  ctaTitle: ¿Su proyecto enfrenta resistencia o un asunto de alta complejidad? Hablemos.
+  ctaText: Una consulta confidencial basta para conocer su caso y presentarle con claridad cómo podemos ayudarle.
 ---

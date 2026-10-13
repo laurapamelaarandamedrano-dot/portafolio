@@ -6,75 +6,95 @@ order: 5
 category: support
 title: Capabilities
 kicker: Core capabilities
-summary: Right-of-way acquisition, social conflict containment, high-stakes negotiation under pressure, risk management, crisis management and public relations. Six capabilities that help complex projects move forward.
-seoDescription: Salvador J. Vazquez Villa's capabilities in right-of-way, social conflict containment, negotiation under pressure, risk and crisis management, and public relations.
-kind: Experience applied to complex projects
+summary: Right-of-way acquisition, social conflict containment, negotiation under pressure, risk and crisis management, public relations, legal follow-up and legal and contract review, delivered by a highly specialized team.
+seoDescription: Right-of-way, conflict containment, negotiation, risk, crisis, public relations, legal follow-up and contract review for complex projects.
+kind: Comprehensive solutions for complex projects
 cover: ../../../assets/photos/experiencia.jpeg
 coverAlt: A handshake between people wearing hard hats and safety vests during a walk-through of a vehicle overpass.
 ---
 
-Large-scale projects rarely stall because of engineering. They stall when agreement is missing. These are the capabilities I bring to those moments.
+Large-scale projects rarely stall because of engineering. They stall when agreements are missing or when risks are not addressed in time. For those moments we offer eight capabilities, backed by a professional team highly specialized in negotiation, risk management and legal affairs.
 
 <h2 id="right-of-way">Right-of-way acquisition</h2>
 
-Construction can only move forward when the land is available, and every piece of land has owners, histories and expectations.
+Construction can only move forward when the land is available. We lead the process from start to finish, methodically and in line with applicable regulations.
 
-- Respectful, patient dialogue with landowners and communities.
-- A careful reading of each case to find fair, workable agreements.
-- Close support until each agreement is in place.
+- Negotiation with landowners, ejidos and communities.
+- Technical and legal analysis of each property to reach workable agreements.
+- Formalization and follow-up until work fronts are delivered.
 
-**What you gain:** open work fronts and trust-based relationships around your project.
+**Outcome:** work fronts available on schedule and an environment that supports project execution.
 
 <h2 id="social-containment">Social conflict containment</h2>
 
-A concern addressed early rarely turns into a conflict. Listening first changes the direction of the conversation.
+A grievance addressed early rarely turns into a conflict. Timely intervention protects operational continuity.
 
-- Timely presence when disagreement emerges.
-- Empathetic listening to understand the root cause.
-- Solutions that acknowledge people's legitimate concerns.
+- Immediate presence when disagreement emerges.
+- Assessment of root causes and the stakeholders involved.
+- Workable solutions that allow work to resume.
 
-**What you gain:** fewer disruptions and a more stable social environment.
+**Outcome:** fewer disruptions and a stable social environment.
 
 <h2 id="negotiation">High-stakes negotiation under pressure</h2>
 
-Tight deadlines, firm positions and a lot at stake. In that setting, composure and method make the difference.
+Tight deadlines, firm positions and a lot at stake. In that setting, strategy and method make the difference.
 
 - Rigorous preparation for every negotiation.
-- Leading the conversation with firmness and respect.
-- Clear agreements every party can stand behind.
+- Firm, institutional leadership of the dialogue.
+- Clear, documented and sustainable agreements for every party.
 
-**What you gain:** decisions that move forward even under the most intense conditions.
+**Outcome:** decisions that move forward even under the most complex conditions.
 
 <h2 id="risk">Risk management</h2>
 
-The best conflict is the one you see coming. Spotting social and environmental risks early protects both the investment and the people involved.
+The best conflict is the one you see coming. Spotting social, political and environmental risks early protects the investment.
 
 - Mapping stakeholders, interests and sensitive issues.
-- Early warning before an issue escalates.
-- Practical recommendations to prevent it.
+- Early warnings before an issue escalates.
+- Action plans and mitigation recommendations.
 
-**What you gain:** visibility into what lies ahead and time to act.
+**Outcome:** visibility into what lies ahead and room to act.
 
 <h2 id="crisis">Crisis management</h2>
 
-When a situation is already critical, you need someone who stays calm, understands the context and opens a way out.
+When a situation is already critical, it takes immediate response capacity, a precise reading of the context and a way out.
 
 - Immediate assessment of the situation.
 - Direct engagement with everyone involved.
-- Stabilization and a path forward, without losing sight of people.
+- Stabilization and an exit plan.
 
-**What you gain:** a fast, composed response when it matters most.
+**Outcome:** a fast, orderly response when it matters most.
 
 <h2 id="public-relations">Public relations</h2>
 
-Trust is built before you need it. Good relationships with communities and key stakeholders make everything else easier.
+Solid institutional relationships with communities, authorities and key stakeholders make every stage of the project easier.
 
-- Clear, honest and timely communication.
-- Trusted relationships with communities and local leaders.
-- A close, steady presence throughout the life of the project.
+- Clear, timely and consistent communication.
+- Engagement with authorities, local leaders and strategic stakeholders.
+- A steady presence throughout the life of the project.
 
-**What you gain:** a solid reputation and an environment open to dialogue.
+**Outcome:** a solid reputation and an environment open to negotiation.
+
+<h2 id="legal-follow-up">Legal follow-up</h2>
+
+An agreement or a proceeding only provides certainty when it is tracked closely through to completion.
+
+- Tracking of proceedings, deadlines and requirements before authorities.
+- Monitoring compliance with agreements and commitments.
+- Regular reports on the status of each matter.
+
+**Outcome:** legal certainty and control over every stage of the process.
+
+<h2 id="contract-review">Legal and contract review</h2>
+
+Well-structured contracts, agreements and instruments prevent future disputes and protect the project's interests.
+
+- Analysis of contracts, agreements and arrangements with third parties.
+- Identification of relevant risks and obligations.
+- Recommendations to strengthen each instrument.
+
+**Outcome:** solid instruments that protect your investment.
 
 ## How we start
 
-It all starts with a confidential conversation. I listen to your situation, share an honest reading of it and, if we decide to work together, we define the scope and how I will support you. Every case is different, so I don't promise outcomes. I promise serious, close and transparent work.
+It all starts with a confidential consultation. We analyze your case, present an objective assessment and, if we decide to work together, define the scope, the assigned team and how we will collaborate. Every matter is different, so we don't promise outcomes. We promise professional, rigorous and transparent work.

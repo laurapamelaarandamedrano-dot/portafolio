@@ -1,7 +1,8 @@
 ---
 lang: en
-order: 4
+order: 2
 title: Undersecretary for Governance
 officialTitle: Subsecretario de Gobernación
+institution: Government of Michoacán
 area: Governance
 ---

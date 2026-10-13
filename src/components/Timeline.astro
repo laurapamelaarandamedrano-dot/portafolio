@@ -1,5 +1,5 @@
 ---
-/** Línea de tiempo (reciente → antiguo). La línea se dibuja al entrar en pantalla. */
+/** Línea de tiempo (de mayor a menor jerarquía). La línea se dibuja al entrar en pantalla. */
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 
@@ -30,6 +30,7 @@ const rendered = await Promise.all(items.map(async (item) => ({ item, ...(await 
             ({item.data.officialTitle})
           </p>
         )}
+        {item.data.institution && <p class="institution">{item.data.institution}</p>}
         {detailed && (
           <div class="detail">
             <Content />
@@ -104,7 +105,8 @@ const rendered = await Promise.all(items.map(async (item) => ({ item, ...(await 
     line-height: 1.25;
     letter-spacing: -0.01em;
   }
-  .official {
+  .official,
+  .institution {
     margin-top: 0.25rem;
     color: var(--ink-soft);
     font-size: 0.9375rem;
@@ -131,6 +133,7 @@ const rendered = await Promise.all(items.map(async (item) => ({ item, ...(await 
   }
   .is-dark .area,
   .is-dark .official,
+  .is-dark .institution,
   .is-dark .detail {
     color: var(--on-primary-soft);
   }

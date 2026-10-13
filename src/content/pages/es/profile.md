@@ -2,19 +2,19 @@
 lang: es
 key: profile
 title: Perfil
-description: Quién es Salvador J. Vazquez Villa, especialista en negociación de alto nivel, contención social, manejo de riesgos y control de crisis.
+description: Salvador J. Vazquez Villa, especialista en negociación de alto nivel, gestión de riesgos y control de crisis, al frente de un equipo altamente especializado.
 eyebrow: Perfil
 heading: Salvador J. Vazquez Villa
-lead: Negociación, diálogo y serenidad para los momentos en que un proyecto más lo necesita.
+lead: Negociación estratégica, gestión de riesgos y soporte jurídico para los momentos decisivos de un proyecto.
 image: ../../../assets/photos/perfil oficial.jpeg
 imageAlt: Retrato de Salvador J. Vazquez Villa, sonriente, con traje azul marino, camisa blanca y corbata roja.
 blocks:
-  closingQuote: Mi trabajo es que las partes se entiendan y que lo acordado se convierta en avance.
+  closingQuote: Nuestro trabajo es lograr acuerdos sólidos y convertir lo pactado en resultados.
 ---
 
-En su trayectoria, Salvador J. Vazquez Villa ha sido **Subsecretario de Derechos Humanos y Población**, **Director de Gobernación**, **Encargado de Despacho del Secretario de Gobierno** y **Subsecretario de Gobernación**.
+Licenciado en Derecho y maestro en Derecho por la Universidad Michoacana de San Nicolás de Hidalgo, y maestro en Transparencia y Combate a la Corrupción por la Universidad Virtual del Estado de Michoacán. En su trayectoria en el Gobierno de Michoacán ha sido **Encargado de Despacho del Secretario de Gobierno**, **Subsecretario de Gobernación**, **Director de Gobernación** y **Subsecretario de Derechos Humanos y Población**.
 
-A lo largo de esa trayectoria ha estado presente en momentos de alta tensión, en el territorio, en la mesa de diálogo y junto a comunidades y proyectos de infraestructura. De ahí vienen las capacidades que hoy lo distinguen:
+Esa experiencia en política interior, gobernabilidad y administración pública, en el territorio y en mesas de negociación de alto nivel, es la base de las capacidades que hoy ofrece junto con un equipo profesional altamente especializado:
 
 - Liberación de derecho de vía.
 - Contención social.
@@ -22,11 +22,13 @@ A lo largo de esa trayectoria ha estado presente en momentos de alta tensión, e
 - Manejo de riesgos.
 - Control de crisis.
 - Relaciones públicas.
+- Seguimiento legal.
+- Revisión jurídico-contractual.
 
-## Cómo trabajo
+## Cómo trabajamos
 
-Escucho antes de proponer. Pongo a las personas al centro y mantengo la calma cuando la situación se complica. Trabajo de forma directa, con integridad y discreción, y acompaño cada caso de principio a fin.
+Cada asunto inicia con un diagnóstico riguroso. Con base en él definimos una estrategia, asignamos al equipo especializado que el caso requiere y damos seguimiento puntual hasta que los acuerdos se traducen en resultados. Trabajamos con integridad, confidencialidad y apego a la normatividad.
 
 ## Conversemos
 
-Si tiene un proyecto que enfrenta resistencia o una situación delicada, la manera más rápida de saber cómo puedo ayudarle es una conversación.
+Si su proyecto enfrenta resistencia o un asunto de alta complejidad, una consulta confidencial es la forma más rápida de conocer cómo podemos ayudarle.
