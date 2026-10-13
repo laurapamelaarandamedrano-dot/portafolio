@@ -31,7 +31,7 @@ El ramal Maravatío–Zitácuaro conecta dos ciudades del oriente de Michoacán.
 
 ## Por qué importa
 
-Una carretera de este tipo atraviesa municipios y comunidades con necesidades distintas. Que avance depende tanto de la obra como de la conversación entre concesionaria, comunidades y actores locales: permisos, derecho de vía, acuerdos locales y atención oportuna de inconformidades.
+Una carretera de este tipo atraviesa municipios y comunidades con necesidades distintas. Su avance depende tanto de la obra como de la negociación entre concesionaria, comunidades y actores locales: permisos, derecho de vía, acuerdos locales y atención oportuna de inconformidades.
 
 ## En nuestra experiencia
 

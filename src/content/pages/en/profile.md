@@ -5,7 +5,7 @@ title: About
 description: Salvador J. Vazquez Villa, a specialist in high-stakes negotiation, risk management and crisis management, leading a highly specialized professional team.
 eyebrow: About
 heading: Salvador J. Vazquez Villa
-lead: Strategic negotiation, risk management and legal support for a project's decisive moments.
+lead: High-stakes negotiation under pressure, risk management and legal support for a project's decisive moments.
 image: ../../../assets/photos/perfil oficial.jpeg
 imageAlt: Portrait of Salvador J. Vazquez Villa, smiling, in a navy suit, white shirt and red tie.
 blocks:
@@ -16,9 +16,9 @@ He holds a law degree and a master's degree in Law from the Universidad Michoaca
 
 That experience in domestic policy, governance and public administration, on the ground and at high-level negotiating tables, is the foundation of the capabilities he now offers alongside a highly specialized professional team:
 
+- High-stakes negotiation under pressure.
 - Right-of-way acquisition.
 - Social conflict containment.
-- High-stakes negotiation under pressure.
 - Risk management.
 - Crisis management.
 - Public relations.
@@ -29,6 +29,6 @@ That experience in domestic policy, governance and public administration, on the
 
 Every matter starts with a rigorous assessment. Based on it, we define a strategy, assign the specialized team the case requires and follow up closely until agreements turn into results. We work with integrity, confidentiality and full regulatory compliance.
 
-## Let's talk
+## Direct engagement
 
-If your project is facing resistance or a highly complex matter, a confidential consultation is the quickest way to find out how we can help.
+The team handles inquiries about projects and highly complex matters directly and confidentially, through its contact line.

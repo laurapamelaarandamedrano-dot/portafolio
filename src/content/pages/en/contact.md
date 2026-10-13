@@ -2,23 +2,23 @@
 lang: en
 key: contact
 title: Contact
-description: Contact Salvador J. Vazquez Villa's team to discuss your project or matter. Confidential consultation, no commitment.
+description: Direct line to Salvador J. Vazquez Villa's team for confidential consultations on projects and highly complex matters.
 eyebrow: Contact
-heading: Let's review your project.
-lead: One consultation is enough to understand your case and show you clearly how we can help.
+heading: Confidential consultation.
+lead: Every matter receives rigorous analysis, a tailored strategy and the discretion it demands.
 steps:
-  - title: We learn about your case
-    text: You walk us through the situation, knowing all information is handled in strict confidence.
-  - title: We present an assessment
-    text: We identify the risks, timelines and stakeholders involved, and share an objective evaluation.
-  - title: We define the next step
-    text: If we decide to work together, we agree on scope, the assigned team and how we will collaborate.
+  - title: Case analysis
+    text: We review the background, the stakeholders involved and the current status of the matter, in strict confidence.
+  - title: Strategic assessment
+    text: We identify risks, timelines and negotiating margins, and present an objective evaluation.
+  - title: Intervention plan
+    text: We define the scope, the assigned team and the work plan for each stage.
 blocks:
-  stepsTitle: What to expect from the first call
-  phoneTitle: Call directly
-  reassure: Confidential consultation · No commitment
-  privacyNote: This site has no forms and collects no data. To protect your information, phone is the only channel.
+  stepsTitle: How we begin
+  phoneTitle: Direct line
+  reassure: Direct, confidential engagement
+  privacyNote: This site has no forms and collects no data. To protect your information, all engagement takes place by phone only.
   ctaEyebrow: Contact
-  ctaTitle: Is your project facing resistance or a highly complex matter? Let's talk.
-  ctaText: One confidential consultation is enough to understand your case and show you clearly how we can help.
+  ctaTitle: High-stakes negotiation for matters that leave no room for error.
+  ctaText: Every case is handled in strict confidence, with rigorous analysis and the backing of a highly specialized team.
 ---

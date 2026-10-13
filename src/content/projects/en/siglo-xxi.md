@@ -29,7 +29,7 @@ The Siglo XXI Highway (Autopista Siglo XXI) is the corridor connecting Pátzcuar
 
 ## Why it matters
 
-It is a strategic route linking central Michoacán with the coast and the port of Lázaro Cárdenas. People, goods and freight travel it every day, so any conflict at its toll plazas or along its sections has an immediate impact on the region.
+It is a strategic route linking central Michoacán with the coast and the port of Lázaro Cárdenas. People, goods and freight travel it every day, so any conflict at its toll plazas or along its sections has an immediate impact on the region and demands swift negotiation under pressure.
 
 ## In our experience
 

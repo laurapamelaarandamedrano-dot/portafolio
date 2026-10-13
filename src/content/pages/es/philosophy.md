@@ -9,12 +9,12 @@ lead: Cada proyecto exige un análisis preciso, una estrategia clara y la ejecuc
 image: ../../../assets/photos/filosofia.jpeg
 imageAlt: Salvador J. Vazquez Villa conversa con productores del campo junto a una camioneta, en un camino de terracería.
 items:
+  - title: Firmeza bajo presión
+    text: En los momentos críticos, el método y la experiencia permiten decidir con claridad y encontrar salidas donde otros solo ven obstáculos.
   - title: Diagnóstico riguroso
     text: Antes de proponer, analizamos. Cada caso tiene antecedentes, actores e intereses propios, y la mejor estrategia parte de conocerlos a fondo.
   - title: Visión estratégica
     text: Cada intervención responde a un objetivo claro y a una ruta definida, con atención a los riesgos y a los tiempos del proyecto.
-  - title: Firmeza bajo presión
-    text: En los momentos críticos, el método y la experiencia permiten decidir con claridad y encontrar salidas donde otros solo ven obstáculos.
   - title: Integridad y legalidad
     text: Cada paso se da por la vía correcta, con apego a la normatividad y con total transparencia ante el cliente.
   - title: Seguimiento de principio a fin
@@ -23,5 +23,5 @@ items:
     text: Cada caso se maneja con estricta reserva y respeto por la información de todas las partes.
 blocks:
   valuesTitle: Los principios que guían nuestro trabajo
-  closing: Sin atajos ni promesas vacías. Un trabajo profesional, riguroso y transparente, de principio a fin.
+  closing: Excelencia en la ejecución, de principio a fin. Sin atajos ni promesas vacías.
 ---

@@ -29,7 +29,7 @@ La Autopista Siglo XXI es el corredor carretero que conecta Pátzcuaro, Uruapan 
 
 ## Por qué importa
 
-Es una vía estratégica que comunica el centro de Michoacán con la costa y el puerto de Lázaro Cárdenas. Por ella circulan a diario personas, mercancías y transporte de carga, por lo que cualquier conflicto en sus plazas de cobro o tramos tiene efectos inmediatos en la región.
+Es una vía estratégica que comunica el centro de Michoacán con la costa y el puerto de Lázaro Cárdenas. Por ella circulan a diario personas, mercancías y transporte de carga, por lo que cualquier conflicto en sus plazas de cobro o tramos tiene efectos inmediatos en la región y exige una negociación ágil bajo presión.
 
 ## En nuestra experiencia
 

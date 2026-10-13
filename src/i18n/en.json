@@ -18,8 +18,8 @@
   "nav.menu": "Menu",
   "lang.es": "Español",
   "lang.en": "English",
-  "cta.book": "Book a call",
-  "cta.callNow": "Call now",
+  "cta.book": "Request a consultation",
+  "cta.callNow": "Direct line",
   "cta.copy": "Copy number",
   "cta.copied": "Number copied",
   "cta.copyFailed": "Couldn't copy. Please select the number manually.",
@@ -33,10 +33,10 @@
   "projects.next": "Next",
   "experience.view": "See full experience",
   "experience.cv": "Download CV (PDF, Spanish)",
-  "footer.tagline": "Strategic negotiation, risk management and legal support for projects that need to move forward.",
+  "footer.tagline": "High-stakes negotiation under pressure, risk management and legal support for highly complex projects.",
   "footer.rights": "All rights reserved.",
   "footer.noTracking": "This site uses no cookies or analytics.",
   "notFound.title": "This page doesn't exist",
-  "notFound.body": "The link may have changed. You can go back home or call directly.",
+  "notFound.body": "The address may have changed. You can return home or contact our direct line.",
   "notFound.back": "Back to home"
 }

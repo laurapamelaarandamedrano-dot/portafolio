@@ -31,7 +31,7 @@ The Maravatío–Zitácuaro branch connects two cities in eastern Michoacán. Ac
 
 ## Why it matters
 
-A highway like this runs through municipalities and communities with very different needs. Its progress depends as much on the construction itself as on the dialogue between the concession holder, communities and local stakeholders: permits, rights of way, local agreements and timely attention to concerns.
+A highway like this runs through municipalities and communities with very different needs. Its progress depends as much on the construction itself as on negotiation between the concession holder, communities and local stakeholders: permits, rights of way, local agreements and timely handling of grievances.
 
 ## In our experience
 

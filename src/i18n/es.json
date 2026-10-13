@@ -18,8 +18,8 @@
   "nav.menu": "Menú",
   "lang.es": "Español",
   "lang.en": "English",
-  "cta.book": "Agenda una llamada",
-  "cta.callNow": "Llamar ahora",
+  "cta.book": "Solicitar consulta",
+  "cta.callNow": "Línea directa",
   "cta.copy": "Copiar número",
   "cta.copied": "Número copiado",
   "cta.copyFailed": "No se pudo copiar. Selecciona el número manualmente.",
@@ -33,10 +33,10 @@
   "projects.next": "Siguiente",
   "experience.view": "Ver trayectoria completa",
   "experience.cv": "Descargar CV (PDF)",
-  "footer.tagline": "Negociación estratégica, gestión de riesgos y soporte jurídico para proyectos que necesitan avanzar.",
+  "footer.tagline": "Negociación de alto nivel bajo presión, gestión de riesgos y soporte jurídico para proyectos de alta complejidad.",
   "footer.rights": "Todos los derechos reservados.",
   "footer.noTracking": "Este sitio no usa cookies ni analítica.",
   "notFound.title": "Esta página no existe",
-  "notFound.body": "Es posible que el enlace haya cambiado. Puede volver al inicio o llamar directamente.",
+  "notFound.body": "Es posible que la dirección haya cambiado. Puede volver al inicio o comunicarse a nuestra línea directa.",
   "notFound.back": "Volver al inicio"
 }

@@ -6,14 +6,25 @@ order: 5
 category: support
 title: Capacidades
 kicker: Capacidades clave
-summary: Liberación de derecho de vía, contención social, negociación bajo presión, manejo de riesgos, control de crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual, a cargo de un equipo altamente especializado.
-seoDescription: Derecho de vía, contención social, negociación, riesgos, crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual para proyectos complejos.
+summary: Negociación de alto nivel bajo presión, liberación de derecho de vía, contención social, manejo de riesgos, control de crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual, a cargo de un equipo altamente especializado.
+seoDescription: Negociación bajo presión, derecho de vía, contención social, riesgos, crisis, relaciones públicas, seguimiento legal y revisión jurídico-contractual.
 kind: Soluciones integrales para proyectos complejos
 cover: ../../../assets/photos/experiencia.jpeg
 coverAlt: Saludo de manos entre participantes con casco y chaleco de obra durante un recorrido por un puente vehicular.
 ---
 
 Los proyectos de gran escala rara vez se detienen por la ingeniería. Se detienen cuando no existen acuerdos o cuando los riesgos no se atienden a tiempo. Para esos momentos ofrecemos ocho capacidades, respaldadas por un equipo profesional altamente especializado en negociación, gestión de riesgos y materia jurídica.
+
+<h2 id="negotiation">Negociación de alto nivel bajo presión</h2>
+
+Es nuestra especialidad. Plazos cortos, posiciones firmes, múltiples actores y consecuencias inmediatas: en ese escenario, la experiencia en mesas de alta tensión, la estrategia y el método marcan la diferencia.
+
+- Análisis previo de actores, intereses, márgenes y escenarios de cada mesa.
+- Conducción firme e institucional de la negociación, aun en condiciones de alta presión.
+- Acuerdos claros, documentados y sostenibles para todas las partes.
+- Seguimiento puntual hasta su cumplimiento.
+
+**Resultado:** decisiones que avanzan aun en las condiciones más complejas.
 
 <h2 id="right-of-way">Liberación de derecho de vía</h2>
 
@@ -34,16 +45,6 @@ Una inconformidad atendida a tiempo rara vez se convierte en conflicto. La inter
 - Soluciones viables que permiten reanudar los trabajos.
 
 **Resultado:** menos interrupciones y un entorno social estable.
-
-<h2 id="negotiation">Negociación de alto nivel bajo presión</h2>
-
-Plazos cortos, posiciones firmes y mucho en juego. En ese escenario, la estrategia y el método marcan la diferencia.
-
-- Preparación rigurosa de cada mesa de negociación.
-- Conducción firme e institucional de la interlocución.
-- Acuerdos claros, documentados y sostenibles para todas las partes.
-
-**Resultado:** decisiones que avanzan aun en las condiciones más complejas.
 
 <h2 id="risk">Manejo de riesgos</h2>
 
@@ -97,4 +98,4 @@ Los contratos, convenios e instrumentos bien estructurados previenen conflictos 
 
 ## Cómo empezamos
 
-Todo comienza con una consulta confidencial. Analizamos su caso, le presentamos un diagnóstico objetivo y, si decidimos trabajar juntos, definimos el alcance, el equipo asignado y la forma de colaboración. Cada asunto es distinto; por eso no prometemos resultados, sí un trabajo profesional, riguroso y transparente.
+Todo comienza con una consulta confidencial. Analizamos el caso, presentamos un diagnóstico objetivo y definimos el alcance, el equipo asignado y la ruta de trabajo. Cada asunto es distinto; nuestro compromiso es el mismo en todos: un trabajo profesional, riguroso y transparente en cada etapa.

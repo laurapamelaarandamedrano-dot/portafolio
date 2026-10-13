@@ -6,14 +6,25 @@ order: 5
 category: support
 title: Capabilities
 kicker: Core capabilities
-summary: Right-of-way acquisition, social conflict containment, negotiation under pressure, risk and crisis management, public relations, legal follow-up and legal and contract review, delivered by a highly specialized team.
-seoDescription: Right-of-way, conflict containment, negotiation, risk, crisis, public relations, legal follow-up and contract review for complex projects.
+summary: High-stakes negotiation under pressure, right-of-way acquisition, social conflict containment, risk and crisis management, public relations, legal follow-up and legal and contract review, delivered by a highly specialized team.
+seoDescription: Negotiation under pressure, right-of-way, conflict containment, risk, crisis, public relations, legal follow-up and contract review for complex projects.
 kind: Comprehensive solutions for complex projects
 cover: ../../../assets/photos/experiencia.jpeg
 coverAlt: A handshake between people wearing hard hats and safety vests during a walk-through of a vehicle overpass.
 ---
 
 Large-scale projects rarely stall because of engineering. They stall when agreements are missing or when risks are not addressed in time. For those moments we offer eight capabilities, backed by a professional team highly specialized in negotiation, risk management and legal affairs.
+
+<h2 id="negotiation">High-stakes negotiation under pressure</h2>
+
+This is our specialty. Tight deadlines, firm positions, multiple stakeholders and immediate consequences: in that setting, experience at high-tension negotiating tables, strategy and method make the difference.
+
+- Prior analysis of the stakeholders, interests, margins and scenarios at every table.
+- Firm, institutional leadership of the negotiation, even under intense pressure.
+- Clear, documented and sustainable agreements for every party.
+- Close follow-up through to compliance.
+
+**Outcome:** decisions that move forward even under the most complex conditions.
 
 <h2 id="right-of-way">Right-of-way acquisition</h2>
 
@@ -34,16 +45,6 @@ A grievance addressed early rarely turns into a conflict. Timely intervention pr
 - Workable solutions that allow work to resume.
 
 **Outcome:** fewer disruptions and a stable social environment.
-
-<h2 id="negotiation">High-stakes negotiation under pressure</h2>
-
-Tight deadlines, firm positions and a lot at stake. In that setting, strategy and method make the difference.
-
-- Rigorous preparation for every negotiation.
-- Firm, institutional leadership of the dialogue.
-- Clear, documented and sustainable agreements for every party.
-
-**Outcome:** decisions that move forward even under the most complex conditions.
 
 <h2 id="risk">Risk management</h2>
 
@@ -97,4 +98,4 @@ Well-structured contracts, agreements and instruments prevent future disputes an
 
 ## How we start
 
-It all starts with a confidential consultation. We analyze your case, present an objective assessment and, if we decide to work together, define the scope, the assigned team and how we will collaborate. Every matter is different, so we don't promise outcomes. We promise professional, rigorous and transparent work.
+It all starts with a confidential consultation. We analyze the case, present an objective assessment and define the scope, the assigned team and the work plan. Every matter is different; our commitment is the same in all of them: professional, rigorous and transparent work at every stage.
